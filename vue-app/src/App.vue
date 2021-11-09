@@ -1,26 +1,11 @@
-<template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
-</template>
+import Vue from 'vue';
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
+Vue.component('TheHeader', {
+  data: function () {
+  },
+  template: '<div style="background-color: #99D3ED">ADF Demand Forecast</div>'
+})
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
-</script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+const app = new Vue ({
+  el: '#app'
+})

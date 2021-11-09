@@ -1,0 +1,168 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    font-weight: 500;
+}
+
+
+header {
+    background-color: #99D3ED;
+    color: white;
+    height: 36px;
+    padding-left: 20px;
+    padding-top: 12px;
+}
+
+footer {
+    color:gray;
+    font-size: 12px;
+    margin: 4px 20px;
+}
+
+.headerIcon {
+    border: 1px solid white;
+    padding: 0px 6px;
+    border-radius: 2px;
+    display: inline-block;
+    font-weight: bolder;
+    margin-right: 8px;
+}
+
+hr {
+    border-top: 0.5px solid rgb(235, 235, 235);
+}
+
+#headerImg {
+    height: 48px;
+    margin-top: -12px;
+    float: right;
+    margin-right: 20px;
+}
+
+#mainSection {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: white;
+  }
+  
+li {
+    float: left;
+}
+  
+li a {
+    display: block;
+    color: #99D3ED;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+    font-size: 14px;
+}
+  
+li a:hover {
+    color:#005981;
+}
+
+#menuBarLine {
+    margin-top: -14px;
+}
+
+#menuOptions {
+    float: right;
+
+}
+
+#month {
+    display: inline-block;
+    margin-left: 20px;
+    font-weight: bolder;
+    color: gray;
+}
+
+#filterbox {
+    float: right;
+    display:inline-block;
+    font-weight: normal;
+    color: black;
+    font-size: 14px;
+}
+
+.filter {
+    margin-right: 10px;
+    display:inline-block;
+}
+
+#summaryTableHeader {
+    color: #005981;
+    font-weight: bolder;
+    margin-bottom: 20px;
+}
+
+table, tr {
+    width: 100%;
+    font-size: 12px;
+    border-collapse: collapse;
+
+}
+
+th {
+    background-color: rgb(122, 122, 122);
+    color: white;
+    padding: 4px 8px;
+}
+
+table, tr, td {
+    border: 1px solid rgb(192, 192, 192);
+}
+
+td {
+    padding: 4px 8px;
+}
+
+li a i {
+    margin-right: 4px;
+}
+
+select {
+    padding: 6px;
+}
+
+.selectGray {
+    background-color:rgb(230, 230, 230);
+}
+
+select {
+    border-color: rgb(187, 187, 187);
+    border-radius: 2px;
+}
+
+.grayButton {
+    display: inline-block;
+    margin: 0px;
+    margin-left: 8px;
+    margin-right: 8px;
+    
+}
+
+.splitButton {
+    padding: 0px;
+    border: 1px solid rgb(187, 187, 187);
+    border-radius: 2px;
+    margin-left: 4px;
+}
+
+#mainInformation {
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.splitButton i {
+    background-color: white;
+    display: inline-block;
+    padding: 8px;
+}
