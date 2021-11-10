@@ -33,7 +33,7 @@
                 </ul>
                 <hr id="menuBarLine">
             </div>
-    <main>
+    <main style="width: 75%; display: inline-block;">
         <div id="mainInformation">
             <select name="BU" id="BU">
                 <option value="BU1">Z7091A01</option>
@@ -325,19 +325,23 @@
 
         </div>
     </main>
-    <footer onclick="showChat()">
+    <aside onclick="hideChat()"> 
+        <img src="assets/chat_img.png" style="width:100%">
+    </aside>
+    <footer>
         <div style="float:left">Showing 1 to 25 of 2666 entries</div>
         <div style="float:right; margin-right: 20px">Page 1 of 107</div>
         <div style="float:right; margin-right: 20px">Articles per Page: 25</div>
 
     </footer>
 
+
     <script src="https://unpkg.com/vue@next"></script>
     <script src="app.js"></script>
     <script>
-        function showChat() {
-            window.location.replace("index CUI.html");
-        }
+    function hideChat() {
+        window.location.replace("index.html");
+    }
     </script>
 </body>
 

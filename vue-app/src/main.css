@@ -38,17 +38,24 @@ hr {
     margin-right: 20px;
 }
 
-#mainSection {
+main {
+    margin-left: 20px;
+    margin-right: 20px;
+
+}
+
+.menuBar {
     margin-left: 20px;
     margin-right: 20px;
 }
 
-ul {
+.menuBar ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: white;
+    height: 60px;
   }
   
 li {
@@ -70,6 +77,7 @@ li a:hover {
 
 #menuBarLine {
     margin-top: -14px;
+    margin-bottom: 0px;
 }
 
 #menuOptions {
@@ -165,4 +173,17 @@ select {
     background-color: white;
     display: inline-block;
     padding: 8px;
+}
+
+aside {
+    float: right;
+    width: 20%;
+    height: 800px;
+    margin-left: 1%;
+    margin-right: 1%;
+    padding: 8px;
+}
+
+aside img {
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
