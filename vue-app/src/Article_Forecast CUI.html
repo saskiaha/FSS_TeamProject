@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>ADF Inspector</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+    <link rel="stylesheet" href="main.css">
+    <script src="https://kit.fontawesome.com/57cfb30a19.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <header>
+        <div class="headerIcon">ADF</div> <b>Advanced Demand Forecast</b> <img id="headerImg"
+                                                                               src="https://www.plattform-i40.de/IP/Redaktion/DE/Anwendungsbeispiele/042-augmented-reality/logo-basf.png?__blob=normal&v=1&size=420w">
+
+    </header>
+    <main style="width: 75%; display: inline-block;">
+        <div class="menuBar">
+            <ul>
+                <li><a href="#infoprovider"><i class="fas fa-th-list"></i>Infoprovider</a></li>
+                <li><a href="#summary" onclick="showSummaryTable()"><i class="fas fa-table"></i>Summary</a></li>
+                <li><a href="#forecast"><i class="fas fa-chart-line"></i>Forecast</a></li>
+                <li><a href="#statistics"><i class="fas fa-chart-bar"></i>Statistics</a></li>
+                <li><a href="#articleForecast" class="selected"><i class="fas fa-chart-line"></i>Article Forecast</a></li>
+                <!--<li style="float:right; ">
+        <a href="#settings" style="margin-top:-8px">
+            <span style="font-size: 24px; color:rgb(122, 122, 122)"><i class="fas fa-cog"></i></span>
+        </a>
+    </li>-->
+                <li style="float:right; ">
+                    <a href="#settings" style="margin-top:-8px">
+                        <span style="font-size: 24px; color: #99D3ED "><i class="fas fa-info-circle"></i></span>
+                    </a>
+                </li>
+            </ul>
+            <hr id="menuBarLine">
+        </div>
+
+        <div id="mainInformation">
+            <select name="BU-Article" id="BU-Article">
+                <option value="BU1">Z7091A01 - GrArticle: 50000539</option>
+                <option value="BU2">Bussines Unit 2</option>
+                <option value="BU3">Bussines Unit 3</option>
+                <option value="BU4">Bussines Unit 4</option>
+            </select>
+            <div id="articleText">PHENOXYPROPANOL 1000KG COMPOSITE IBC</div>
+            <div id="filterbox">
+                June 2021
+                <i class="fas fa-caret-right"></i>
+                <select name="filterArticle" id="filterArticle">
+                    <option value="FA1">July 2021</option>
+                    <option value="FA2">Filter Settings 2</option>
+                    <option value="FA3">Filter Settings 3</option>
+                    <option value="FA4">Filter Settings 4</option>
+                </select>
+            </div>
+        </div>
+        <div id="mainGraphs">
+
+            <img src="assets/Graph_ArticleFC.png" width="85%">
+        </div>
+    </main>
+    <aside onclick="hideChat()">
+        <img src="assets/chat_img.png" style="width:100%">
+    </aside>
+    <footer onclick="showChat()" style="width: 75%; display: inline-block;">
+        <div class="menuBar">
+            <ul>
+                <li><a href="#FCValues" class="selected"><i class="fas fa-table"></i>Forecast Values</a></li>
+                <li><a href="#info" onclick="showArticleInfo()"><i class="fas fa-th"></i>Information</a></li>
+                <li><a href="#FCMethods" onclick="showFCMethods()"><i class="fas fa-list-ol"></i>Forecast Methods</a></li>
+            </ul>
+            <hr id="menuBarLine">
+            <br>
+        </div>
+        <div id="mainGraphs">
+            <table>
+                <tr>
+                    <th>Year</th>
+                    <th>Jan</th>
+                    <th>Feb</th>
+                    <th>Mar</th>
+                    <th>Apr</th>
+                    <th>May</th>
+                    <th>Jun</th>
+                    <th>Jul</th>
+                    <th>Aug</th>
+                    <th>Sep</th>
+                    <th>Oct</th>
+                    <th>Nov</th>
+                    <th>Dec</th>
+                    <th>Full Year</th>
+                </tr>
+                <tr>
+                    <td>2016</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>30 000</td>
+                    <td>26 000</td>
+                    <td>30 600</td>
+                    <td>28 000</td>
+                    <td>19 100</td>
+                    <td>25 300</td>
+                    <td></td>
+
+                </tr>
+                <tr>
+                    <td>2017</td>
+                    <td>30 000</td>
+                    <td>26 000</td>
+                    <td>30 600</td>
+                    <td>28 000</td>
+                    <td>19 100</td>
+                    <td>26 000</td>
+                    <td>30 600</td>
+                    <td>28 000</td>
+                    <td>19 100</td>
+                    <td>25 300</td>
+                    <td>25 300</td>
+                    <td>30 000</td>
+                    <td>248 700</td>
+
+                </tr>
+                <tr>
+                    <td>2018</td>
+                    <td>19 100</td>
+                    <td>26 000</td>
+                    <td>30 600</td>
+                    <td>28 000</td>
+                    <td>19 100</td>
+                    <td>25 300</td>
+                    <td>19 100</td>
+                    <td>26 000</td>
+                    <td>30 600</td>
+                    <td>28 000</td>
+                    <td>19 100</td>
+                    <td>25 300</td>
+                    <td>253 000</td>
+
+                </tr>
+                <tr>
+                    <td>2019</td>
+                    <td>25 300</td>
+                    <td>19 100</td>
+                    <td>26 000</td>
+                    <td>30 600</td>
+                    <td>28 000</td>
+                    <td>19 100</td>
+                    <td>25 300</td>
+                    <td>19 100</td>
+                    <td>26 000</td>
+                    <td>30 600</td>
+                    <td>28 000</td>
+                    <td>19 100</td>
+                    <td>275 800</td>
+
+                </tr>
+                <tr>
+                    <td>2020</td>
+                    <td>28 000</td>
+                    <td>19 100</td>
+                    <td>25 300</td>
+                    <td>19 100</td>
+                    <td>26 000</td>
+                    <td>30 600</td>
+                    <td>28 000</td>
+                    <td>19 100</td>
+                    <td>25 300</td>
+                    <td>19 100</td>
+                    <td>26 000</td>
+                    <td>30 600</td>
+                    <td>227 500</td>
+
+                </tr>
+                <tr>
+                    <td>2021</td>
+                    <td>26 000</td>
+                    <td>30 600</td>
+                    <td>28 000</td>
+                    <td>19 100</td>
+                    <td>25 300</td>
+                    <td>19 100</td>
+                    <td class="blue">28 000</td>
+                    <td class="blue">35 200</td>
+                    <td class="blue">23 800</td>
+                    <td class="blue">13 500</td>
+                    <td class="blue">22 400</td>
+                    <td class="blue">92 700</td>
+                    <td class="blue">233 500</td>
+
+                </tr>
+                <tr>
+                    <td>2022</td>
+                    <td class="blue">28 000</td>
+                    <td class="blue">35 200</td>
+                    <td class="blue">23 800</td>
+                    <td class="blue">13 500</td>
+                    <td class="blue">22 400</td>
+                    <td class="blue">92 700</td>
+                    <td class="blue">23 500</td>
+                    <td class="blue">35 200</td>
+                    <td class="blue">23 800</td>
+                    <td class="blue">13 500</td>
+                    <td class="blue">22 400</td>
+                    <td class="blue">92 700</td>
+                    <td class="blue">272 800</td>
+
+                </tr>
+                <tr>
+                    <td>2023</td>
+                    <td class="blue">28 000</td>
+                    <td class="blue">35 200</td>
+                    <td class="blue">23 800</td>
+                    <td class="blue">13 500</td>
+                    <td class="blue">22 400</td>
+                    <td class="blue">92 700</td>
+                    <td class="blue"></td>
+                    <td class="blue"></td>
+                    <td class="blue"></td>
+                    <td class="blue"></td>
+                    <td class="blue"></td>
+                    <td class="blue"></td>
+                    <td class="blue"></td>
+
+                </tr>
+            </table>
+
+        </div>
+
+    </footer>
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="app.js"></script>
+    <script>
+        function hideChat() {
+            window.location.replace("Article_Forecast.html");
+        }
+        function showSummaryTable() {
+            window.location.replace("summary CUI.html");
+        }
+        function showFCMethods() {
+            window.location.replace("Article_Forecast_Methods CUI.html");
+        }
+        function showArticleInfo() {
+            window.location.replace("Article_Forecast_Info CUI.html");
+        }
+    </script>
+</body>
+
+</html>

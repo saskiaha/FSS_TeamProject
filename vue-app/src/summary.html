@@ -20,20 +20,28 @@
             src="https://www.plattform-i40.de/IP/Redaktion/DE/Anwendungsbeispiele/042-augmented-reality/logo-basf.png?__blob=normal&v=1&size=420w">
 
     </header>
+    <main>
             <div class="menuBar">
                 <ul>
                     <li><a href="#infoprovider"><i class="fas fa-th-list"></i>Infoprovider</a></li>
-                    <li><a href="#summary"><i class="fas fa-table"></i>Summary</a></li>
+                    <li><a href="#summary" class="selected"><i class="fas fa-table"></i>Summary</a></li>
                     <li><a href="#forecast"><i class="fas fa-chart-line"></i>Forecast</a></li>
                     <li><a href="#statistics"><i class="fas fa-chart-bar"></i>Statistics</a></li>
-                    <li><a href="#articleForecast"><i class="fas fa-chart-line"></i>Article Forecast</a></li>
-                    <li style="float:right; "><a href="#settings" style="margin-top:-8px"><span
-                                style="font-size: 24px; color:rgb(122, 122, 122)"><i class="fas fa-cog"></i></span></a>
+                    <li><a href="#articleForecast" onClick="showFC()"><i class="fas fa-chart-line"></i>Article Forecast</a></li>
+                    <!--<li style="float:right; ">
+        <a href="#settings" style="margin-top:-8px">
+            <span style="font-size: 24px; color:rgb(122, 122, 122)"><i class="fas fa-cog"></i></span>
+        </a>
+    </li>-->
+                    <li style="float:right; ">
+                        <a href="#settings" style="margin-top:-8px">
+                            <span style="font-size: 24px; color: #99D3ED "><i class="fas fa-info-circle"></i></span>
+                        </a>
                     </li>
                 </ul>
                 <hr id="menuBarLine">
             </div>
-    <main>
+    
         <div id="mainInformation">
             <select name="BU" id="BU">
                 <option value="BU1">Z7091A01</option>
@@ -95,7 +103,7 @@
                     <th>STFC Level</th>
                     <th>STFC Method</th>
                 </tr>
-                <tr>
+                <tr onclick="showFC()">
                     <td>500062</td>
                     <td>0</td>
                     <td>PHENOXYPROPANOL</td>
@@ -111,7 +119,7 @@
                     <td>MA 3</td>
 
                 </tr>
-                <tr>
+                <tr onclick="showFC()">
                     <td>500062</td>
                     <td>0</td>
                     <td>PHENOXYPROPANOL</td>
@@ -127,7 +135,7 @@
                     <td>MA 3</td>
 
                 </tr>
-                <tr>
+                <tr onclick="showFC()">
                     <td>500062</td>
                     <td>0</td>
                     <td>PHENOXYPROPANOL</td>
@@ -143,7 +151,7 @@
                     <td>MA 3</td>
 
                 </tr>
-                <tr>
+                <tr onclick="showFC()">
                     <td>500062</td>
                     <td>0</td>
                     <td>PHENOXYPROPANOL</td>
@@ -159,7 +167,7 @@
                     <td>MA 3</td>
 
                 </tr>
-                <tr>
+                <tr onclick="showFC()">
                     <td>500062</td>
                     <td>0</td>
                     <td>PHENOXYPROPANOL</td>
@@ -175,7 +183,7 @@
                     <td>MA 3</td>
 
                 </tr>
-                <tr>
+                <tr onclick="showFC()">
                     <td>500062</td>
                     <td>0</td>
                     <td>PHENOXYPROPANOL</td>
@@ -191,7 +199,7 @@
                     <td>MA 3</td>
 
                 </tr>
-                <tr>
+                <tr onclick="showFC()">
                     <td>500062</td>
                     <td>0</td>
                     <td>PHENOXYPROPANOL</td>
@@ -207,7 +215,7 @@
                     <td>MA 3</td>
 
                 </tr>
-                <tr>
+                <tr onclick="showFC()">
                     <td>500062</td>
                     <td>0</td>
                     <td>PHENOXYPROPANOL</td>
@@ -223,7 +231,7 @@
                     <td>MA 3</td>
 
                 </tr>
-                <tr>
+                <tr onclick="showFC()">
                     <td>500062</td>
                     <td>0</td>
                     <td>PHENOXYPROPANOL</td>
@@ -239,7 +247,7 @@
                     <td>MA 3</td>
 
                 </tr>
-                <tr>
+                <tr onclick="showFC()">
                     <td>500062</td>
                     <td>0</td>
                     <td>PHENOXYPROPANOL</td>
@@ -255,7 +263,7 @@
                     <td>MA 3</td>
 
                 </tr>
-                <tr>
+                <tr onclick="showFC()">
                     <td>500062</td>
                     <td>0</td>
                     <td>PHENOXYPROPANOL</td>
@@ -271,7 +279,7 @@
                     <td>MA 3</td>
 
                 </tr>
-                <tr>
+                <tr onclick="showFC()">
                     <td>500062</td>
                     <td>0</td>
                     <td>PHENOXYPROPANOL</td>
@@ -287,7 +295,7 @@
                     <td>MA 3</td>
 
                 </tr>
-                <tr>
+                <tr onclick="showFC()">
                     <td>500062</td>
                     <td>0</td>
                     <td>PHENOXYPROPANOL</td>
@@ -303,7 +311,7 @@
                     <td>MA 3</td>
 
                 </tr>
-                <tr>
+                <tr onclick="showFC()">
                     <td>500062</td>
                     <td>0</td>
                     <td>PHENOXYPROPANOL</td>
@@ -322,21 +330,30 @@
 
 
             </table>
-
+            
+            
         </div>
+
     </main>
-    <footer onclick="showChat()">
+    <footer >
         <div style="float:left">Showing 1 to 25 of 2666 entries</div>
         <div style="float:right; margin-right: 20px">Page 1 of 107</div>
         <div style="float:right; margin-right: 20px">Articles per Page: 25</div>
 
     </footer>
+    <div id="chatIcon" onclick="showChat()">
+        <center><span style="font-size:50px"><i class="fas fa-comments"></i></span></center>
+    </div>
 
     <script src="https://unpkg.com/vue@next"></script>
     <script src="app.js"></script>
     <script>
         function showChat() {
-            window.location.replace("index CUI.html");
+            window.location.replace("summary CUI.html");
+        }
+
+        function showFC() {
+            window.location.replace("Article_Forecast.html");
         }
     </script>
 </body>
