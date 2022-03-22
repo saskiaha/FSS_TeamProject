@@ -1,0 +1,47 @@
+<main>
+<div id="mainInformation">
+    <select name="BU-Article" id="BU-Article">
+        <option value="BU1">Z7091A01 - GrArticle: 50000539</option>
+        <option value="BU2">Bussines Unit 2</option>
+        <option value="BU3">Bussines Unit 3</option>
+        <option value="BU4">Bussines Unit 4</option>
+    </select>
+    <div id="articleText">PHENOXYPROPANOL 1000KG COMPOSITE IBC</div>
+    <div id="filterbox">
+        June 2021 
+        <i class="fas fa-caret-right"></i>
+        <select name="filterArticle" id="filterArticle">
+            <option value="FA1">July 2021</option>
+            <option value="FA2">Filter Settings 2</option>
+            <option value="FA3">Filter Settings 3</option>
+            <option value="FA4">Filter Settings 4</option>
+        </select>
+    </div>
+</div>
+<div id="mainGraphs">
+    
+    <img src="assets/Graph_ArticleFC.png" width="85%">
+</div>
+</main>
+<footer>
+<div class="menuBar">
+    <ul>
+        <li style="float:left"><a id="valuesButton" (click)="changeSubNav('Values')" class="selected"><i class="fas fa-table"></i>Forecast Values</a></li>
+        <li style="float:left"><a id="valuesInformation" (click)="changeSubNav('Information')"><i class="fas fa-table"></i>Information</a></li>
+        <li style="float:left"><a id="valuesMethods" (click)="changeSubNav('Methods')"><i class="fas fa-table"></i>Forecast Methods</a></li>
+    </ul>
+    <hr id="menuBarLine">
+    <br>
+</div>
+<div id="mainGraphs">
+
+<app-values  id="Values" style="display: block;" #Values></app-values>
+<app-information id="Information" style="display: none;" #Information></app-information>
+<app-methods id="Methods" style="display: none;" #Methods></app-methods>
+</div>
+
+
+
+
+
+

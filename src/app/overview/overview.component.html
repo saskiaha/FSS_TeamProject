@@ -1,0 +1,39 @@
+<header>
+    <div class="headerIcon">ADF</div> <b>Advanced Demand Forecast</b> <img id="headerImg"
+        src="https://www.plattform-i40.de/IP/Redaktion/DE/Anwendungsbeispiele/042-augmented-reality/logo-basf.png?__blob=normal&v=1&size=420w">
+
+</header>
+<div class="menuBar">
+    <ul>
+        <li style="float:left"><a (click)="changeNav('Infoprovider')"><i class="fas fa-th-list"></i>Infoprovider</a></li>
+        <li style="float:left"><a class="selected" (click)="changeNav('Summary')"><i class="fas fa-table"></i>Summary</a></li>
+        <li style="float:left"><a (click)="changeNav('Forecast')"><i class="fas fa-chart-line"></i>Forecast</a></li>
+        <li style="float:left"><a (click)="changeNav('Statistics')"><i class="fas fa-chart-bar"></i>Statistics</a></li>
+        <li style="float:left"><a (click)="changeNav('Article Forecast')"><i class="fas fa-chart-line"></i>Article Forecast</a></li>
+        <!--<li style="float:right; ">
+                  <a href="#settings" style="margin-top:-8px">
+                      <span style="font-size: 24px; color:rgb(122, 122, 122)"><i class="fas fa-cog"></i></span>
+                  </a>
+              </li>-->
+        <li style="float:right; ">
+            <a href="#settings" style="margin-top:-8px">
+                <span style="font-size: 24px; color: #99D3ED "><i class="fas fa-info-circle"></i></span>
+            </a>
+        </li>
+    </ul>
+    <hr id="menuBarLine">
+</div>
+<main style="width: 75%; display: inline-block;">
+    <app-article id="Article" style="display: none;" #Article></app-article>
+    <app-summary id="Summary" style="display: block;" #Summary></app-summary>
+</main>
+<div id="chatIcon" (click)="showChat()" style="display: block;">
+    <span style="font-size:32px"><i class="fas fa-comments"></i></span>
+</div>
+<aside id="webChat" class="webchat-container" style="display: none;">
+    <div id="closeIcon" (click)="hideChat()" style="display: block;">
+        <span style="font-size:12px">X</span>
+    </div>
+    <div id="botWin" style="height:100%" #botWindow></div>
+
+</aside>
