@@ -18,6 +18,7 @@ import {
   formatDate
 } from '@angular/common';
 
+//import data from '../assets/Article1.json'
 
 import {
   Subscription
@@ -162,8 +163,75 @@ export class Article implements OnInit, AfterViewInit {
     }
   }
 
-
-
-
-
 }
+var Highcharts = require('highcharts');
+// Load module after Highcharts is loaded
+require('highcharts/modules/exporting')(Highcharts);
+// Create the chart
+
+const article = require('assets/Article1.json');
+
+var data = article['DATA'];
+var actual = [];
+var actualSplit = [];
+var fc = [];
+var fcSplit = [];
+console.log(data);
+for (var i = 0; i < data.length; i++) {
+
+  actual[i] = [data[i]['DATE'], data[i]['ACTUAL']];
+
+  //Bring date in correct format
+  actualSplit[i] = [actual[i][0].split("-", 3), actual[i][1]];
+  actualSplit[i] = [Date.UTC(actualSplit[i][0][0], (actualSplit[i][0][1] - 1), actualSplit[i][0][2]), actualSplit[i][1]];
+
+  if (actualSplit[i][1] == undefined) {
+    actualSplit.pop();
+    break;
+  }
+}
+
+fcSplit[0] = actualSplit[actualSplit.length - 1];
+for (var i = 1; actualSplit.length + i < data.length; i++) {
+  console.log(data[actualSplit.length + i]);
+
+  fc[i] = [data[actualSplit.length + i]['DATE'], data[actualSplit.length+ i]['FORECAST']];
+
+  //Bring date in correct format
+  fcSplit[i] = [fc[i][0].split("-", 3), fc[i][1]];
+  fcSplit[i] = [Date.UTC(fcSplit[i][0][0], (fcSplit[i][0][1] - 1), fcSplit[i][0][2]), fcSplit[i][1]];
+}
+console.log(fcSplit);
+
+document.addEventListener('DOMContentLoaded', function () {
+  const chart = Highcharts.chart('container', {
+    chart: {
+      type: 'line',
+      zoomType: 'x'
+    },
+    title: {
+      text: 'Forecast'
+    },
+    xAxis: {
+      type:'datetime'
+    },
+
+    plotOptions: {
+      series: {
+        pointStart: Date.UTC(2015, 0, 1),
+        pointIntervalUnit: 'month'
+      }
+    },
+
+    yAxis: {
+    },
+
+    series: [{
+      name: "Actual Demand",
+      data: actualSplit
+    }, {
+      name: "Forecast",
+      data: fcSplit
+      }]
+  });
+});

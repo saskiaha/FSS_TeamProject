@@ -34,7 +34,6 @@
               {
                 "input": "node_modules/bootstrap/dist/css/bootstrap.css"
               },
-
               "src/styles.scss"
             ],
             "scripts": [
@@ -151,5 +150,8 @@
       }
     }
   },
-  "defaultProject": "d3-in-angular"
+  "defaultProject": "d3-in-angular",
+  "cli": {
+    "analytics": "516ca916-91f5-4662-adea-c1016a0d14aa"
+  }
 }

@@ -32,6 +32,7 @@ import { filter } from "rxjs/operators";
 import { DrillDownService } from "../shared/drilldown.services";
 import { SliderComponent } from '@progress/kendo-angular-inputs';
 import { Console } from "console";
+import { stringify } from "@angular/compiler/src/util";
 //import { DropDownListComponent } from '@progress/kendo-angular-dropdowns';
 
 
@@ -112,11 +113,159 @@ export class Methods implements OnInit, AfterViewInit {
 
           }
           /**/
+          const article = require('assets/Article1.json');
+          var methodsContent = article['METHODS_CONTENT'];
+          var performance = methodsContent['PERF'];
+          var methods = methodsContent['METHODS'];
+          var info = article['INFO'];
+          var table: HTMLTableElement = <HTMLTableElement>document.getElementById("methodTable");
+
+          for (var i = 0; i < methods.length; i++) {
+            var row = table.insertRow(i + 1);
+            var countCell = row.insertCell(0);
+            var methodCell = row.insertCell(1);
+            var scoreCell = row.insertCell(2);
+            countCell.innerHTML = stringify(i + 1);
+            methodCell.innerHTML = methods[i]['METHOD'];
+            scoreCell.innerHTML = methods[i]['SCORE'];
+          }
+
+          var btMethod: HTMLSelectElement = <HTMLSelectElement>document.getElementById("BTMethod");
+          var btPC: HTMLSelectElement = <HTMLSelectElement>document.getElementById("BTPC");
+          var btFCStep: HTMLSelectElement = <HTMLSelectElement>document.getElementById("BTFCStep");
+
+          var performanceCriterionName;
+          btPC.value = info['CRITERION'];
+          switch (info['CRITERION']) {
+            case 'FCA': performanceCriterionName = "Forecast Accuracy"; break;
+            case 'PIS': performanceCriterionName = "Periods in Stock"; break;
+            default: performanceCriterionName = "Performance Criterion";
+
+          }
+          var performanceCriterion
+
+          for (var i = 0; i < methods.length; i++) {
+            var opt = document.createElement('option');
+            opt.value = stringify(i);
+            opt.text = methods[i]['METHOD'];
+            btMethod.add(opt, btMethod.options.length);
+          }
+
+          var Highcharts = require('highcharts');
+          // Load module after Highcharts is loaded
+          require('highcharts/modules/exporting')(Highcharts);
+
+          var pcData;
+          var pcData2 = [];
+          var pcData3 = [];
+
+          for (var i = 0; i < performance.length; i++) {
+            if (performance[i]['FCSTEP'] == 2) {
+              pcData2.push([performance[i]['METHOD'], performance[i]['MSE'], performance[i]['FCA'], performance[i]['MAPE'], performance[i]['PIS'], performance[i]['MAE'], performance[i]['ME'], performance[i]['MASE'], performance[i]['RMSE'], performance[i]['SMAPE'], performance[i]['SAPIS'], performance[i]['ACR'], performance[i]['MAR'], performance[i]['MSR']]);
+            }
+            if (performance[i]['FCSTEP'] == 3) {
+              pcData3.push([performance[i]['METHOD'], performance[i]['MSE'], performance[i]['FCA'], performance[i]['MAPE'], performance[i]['PIS'], performance[i]['MAE'], performance[i]['ME'], performance[i]['MASE'], performance[i]['RMSE'], performance[i]['SMAPE'], performance[i]['SAPIS'], performance[i]['ACR'], performance[i]['MAR'], performance[i]['MSR']]);
+            }
+
+          }
+
+          if (btFCStep.value == "2") {
+            pcData = pcData2
+          }
+
+          if (btFCStep.value == "3") {
+            pcData = pcData2
+          }
+
+          var performanceIndex
+          switch (btPC.value) {
+            case 'MSE': performanceIndex = 1; break;
+            case 'FCA': performanceIndex = 2; break;
+            case 'MAPE': performanceIndex = 3; break;
+            case 'PIS': performanceIndex = 4; break;
+            case 'MAE': performanceIndex = 5; break;
+            case 'ME': performanceIndex = 6; break;
+            case 'MASE': performanceIndex = 7; break;
+            case 'RMSE': performanceIndex = 8; break;
+            case 'SMAPE': performanceIndex = 9; break;
+            case 'SAPIS': performanceIndex = 10; break;
+            case 'ACR': performanceIndex = 11; break;
+            case 'MAR': performanceIndex = 12; break;
+            case 'MSR': performanceIndex = 13; break;
+          }
+
+          for (var i = 0; i < pcData.length; i++) {
+            pcData[i] = [pcData[i][0], pcData[i][performanceIndex]];
+          }
+          console.log(btPC.value);
+          console.log(pcData);
 
 
 
+          document.addEventListener('DOMContentLoaded', function () {
+            const chart = Highcharts.chart('FCGraph1', {
+              chart: {
+                type: 'column',
+                reflow: true
+              },
+              legend: { enabled: false },
+              title: {
+                text: performanceCriterionName,
+                style: {
+                  fontSize: '10px',
+                }
+              },
+              xAxis: {
+                type: 'category'
+              },
+
+              yAxis: {
+              },
+
+              series: [{
+                name: performanceCriterionName,
+                data: pcData
+              }, {
+              }]
+            });
+
+          });
+
+          document.addEventListener('DOMContentLoaded', function () {
+            const chart = Highcharts.chart('FCGraph2', {
+              chart: {
+                type: 'column',
+              
+                legend: { enabled: false },
+                title: {
+                  text: performanceCriterionName,
+                  style: {
+                    fontSize: '10px',
+                  }
+
+                },
+                xAxis: {
+                  type: 'category'
+                },
+
+                yAxis: {
+                },
+
+                series: [{
+                  name: performanceCriterionName,
+                  data: pcData
+                }, {
+                }]
+              }
+              });
+
+          });
 
         });
+        document.addEventListener('DOMContentLoaded', function () {
+          window.resizeTo(400, window.innerHeight);
+        });
+
       });
   }
 
@@ -125,6 +274,7 @@ export class Methods implements OnInit, AfterViewInit {
 
   public ngAfterViewInit(): void {
     parent.postMessage("IframeLoaded", "*")
+
     //console.log('Site Loaded')
 
 
@@ -135,3 +285,4 @@ export class Methods implements OnInit, AfterViewInit {
 
 
 }
+

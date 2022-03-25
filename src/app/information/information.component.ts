@@ -34,6 +34,7 @@ import { SliderComponent } from '@progress/kendo-angular-inputs';
 import { Console } from "console";
 //import { DropDownListComponent } from '@progress/kendo-angular-dropdowns';
 
+import * as $ from 'jquery';
 
 @Component({
   selector: "app-information",
@@ -55,7 +56,25 @@ export class Information implements OnInit, AfterViewInit {
   doc = document;
   el = this.doc.documentElement;
   body = this.doc.getElementsByTagName("body")[0];
-
+  AggregationLevel: string = '';
+  ArticleID: string = '';
+  SBU: string = '';
+  Country: string = '';
+  AlphaCode: string = '';
+  Segmentation: string = '';
+  PackageSize: string = '';
+  DBPackageSize: string = '';
+  HistoricalData: string = '';
+  NonZero: string = '';
+  TSClass: string = '';
+  Seasonal: string = '';
+  AvgDemand: string = '';
+  STMethod: string = '';
+  STPeriod: string = '';
+  STLevel: string = '';
+  LTMethod: string = '';
+  LTPeriod: string = '';
+  LTLevel: string = '';
 
   private _routerSub = Subscription.EMPTY;
 
@@ -112,6 +131,27 @@ export class Information implements OnInit, AfterViewInit {
 
           }
           /**/
+          const article = require('assets/Article1.json');
+          var info = article['INFO'];
+          this.AggregationLevel = info['DATALEVEL'];
+          this.ArticleID = info['ARTICLENAME'];
+          this.SBU = info['SBU'];
+          this.Country = info['COUNTRY'];
+          this.AlphaCode = info['ALPHA'];
+          this.Segmentation = info['SEGMENTATION'];
+          this.PackageSize = info['PACKAGE_SIZE_SYS'];
+          this.DBPackageSize = info['PACKAGE_SIZE_DB'];
+          this.HistoricalData = info['LENGTH'];
+          this.NonZero = info['PNZ'];
+          this.TSClass = info['TSCLASS'];
+          this.Seasonal = 'No';
+          this.AvgDemand = info['AVSALES'];
+          this.STMethod = info['STFCMETHOD'];
+          this.STPeriod = info['STHORIZON'] + ' months';
+          this.STLevel = info['STFCLEVEL'];
+          this.LTMethod = info['LTFCMETHOD'];
+          this.LTPeriod = info['LTHORIZON'] + ' months';
+          this.LTLevel = info['LTFCLEVEL'];;
 
 
 
@@ -134,4 +174,8 @@ export class Information implements OnInit, AfterViewInit {
 
 
 
+
+
 }
+
+
