@@ -79,7 +79,6 @@ export class Methods implements OnInit, AfterViewInit {
   public userID;
   public treatment;
   public task;
-
   public chart2 = null;
 
   constructor(
@@ -182,188 +181,198 @@ export class Methods implements OnInit, AfterViewInit {
     });
     var chart2 = this.chart2;
 
-    function updateChart2() {
-      //const chart2 = Highcharts.chart('FCGraph2', {});
-      var btFCStep: HTMLSelectElement = <HTMLSelectElement>document.getElementById("BTFCStep");
-      var btMethod: HTMLSelectElement = <HTMLSelectElement>document.getElementById("BTMethod");
-
-      var feData = [];
-      var month = [];
-      var selectedMethod = btMethod.value;
-      var fcStep = btFCStep.value;
-
-      for (var i = 0; i < pp.length; i++) {
-        if (pp[i]['METHOD'] == selectedMethod && pp[i]['FCSTEP'] == fcStep) {
-          month = pp[i]['DATE'].split("-", 3);
-          month = [Date.UTC(month[0], month[1], month[2])];
-          feData.push([month[0], pp[i]['ERROR']]);
-        }
-      }
-      var newSeries = [{
-        data: feData
-      }];
-      chart2.update({
-        series: newSeries
-
-      })
-
-      console.log("Methode!");
-    }
-
 
     //console.log('Site Loaded')
-    createMethodsTable();
-    createBTOptions();
+    this.createMethodsTable();
+    this.createBTOptions();
 
-    createGraph1();
-    createGraph2();
+    this.createGraph1();
+    this.createGraph2();
 
-    updateChart2();
+    this.updateChart2();
   }
 
-}
 
+  updateChart2() {
+    //const chart2 = Highcharts.chart('FCGraph2', {});
+    var btFCStep: HTMLSelectElement = <HTMLSelectElement>document.getElementById("BTFCStep");
+    var btMethod: HTMLSelectElement = <HTMLSelectElement>document.getElementById("BTMethod");
 
+    var feData = [];
+    var month = [];
+    var selectedMethod = btMethod.value;
+    var fcStep = btFCStep.value;
 
-function createMethodsTable() {
-  var table: HTMLTableElement = <HTMLTableElement>document.getElementById("methodTable");
-
-  for (var i = 0; i < methods.length; i++) {
-    var row = table.insertRow(i + 1);
-    var countCell = row.insertCell(0);
-    var methodCell = row.insertCell(1);
-    var scoreCell = row.insertCell(2);
-    countCell.innerHTML = stringify(i + 1);
-    methodCell.innerHTML = methods[i]['METHOD'];
-    scoreCell.innerHTML = methods[i]['SCORE'];
-  }
-}
-
-function createBTOptions() {
-  var btMethod: HTMLSelectElement = <HTMLSelectElement>document.getElementById("BTMethod");
-  var btPC: HTMLSelectElement = <HTMLSelectElement>document.getElementById("BTPC");
-
-
-  for (var i = 0; i < methods.length; i++) {
-    var opt = document.createElement('option');
-    opt.value = methods[i]['METHOD'];
-    opt.text = methods[i]['METHOD'];
-    btMethod.add(opt, btMethod.options.length);
-  }
-
-}
-
-
-
-
-function createGraph1() {
-  var btPC: HTMLSelectElement = <HTMLSelectElement>document.getElementById("BTPC");
-  var btFCStep: HTMLSelectElement = <HTMLSelectElement>document.getElementById("BTFCStep");
-  var btMethod: HTMLSelectElement = <HTMLSelectElement>document.getElementById("BTMethod");
-  var performanceCriterionName;
-  var performanceCriterion;
-
-
-
-
-  var Highcharts = require('highcharts');
-  // Load module after Highcharts is loaded
-  require('highcharts/modules/exporting')(Highcharts);
-  btPC.value = info['CRITERION'];
-  switch (info['CRITERION']) {
-    case 'FCA': performanceCriterionName = "Forecast Accuracy"; break;
-    case 'PIS': performanceCriterionName = "Periods in Stock"; break;
-    default: performanceCriterionName = "Performance Criterion";
-
-  }  btPC.value = info['CRITERION'];
-  switch (info['CRITERION']) {
-    case 'FCA': performanceCriterionName = "Forecast Accuracy"; break;
-    case 'PIS': performanceCriterionName = "Periods in Stock"; break;
-    default: performanceCriterionName = "Performance Criterion";
-
-  }
-  var pcData;
-  var pcData2 = [];
-  var pcData3 = [];
-  var fcStep = btFCStep.value;
-  for (var i = 0; i < performance.length; i++) {
-    if (performance[i]['FCSTEP'] == 2) {
-      pcData2.push([performance[i]['METHOD'], performance[i]['MSE'], performance[i]['FCA'], performance[i]['MAPE'], performance[i]['PIS'], performance[i]['MAE'], performance[i]['ME'], performance[i]['MASE'], performance[i]['RMSE'], performance[i]['SMAPE'], performance[i]['SAPIS'], performance[i]['ACR'], performance[i]['MAR'], performance[i]['MSR']]);
+    for (var i = 0; i < pp.length; i++) {
+      if (pp[i]['METHOD'] == selectedMethod && pp[i]['FCSTEP'] == fcStep) {
+        month = pp[i]['DATE'].split("-", 3);
+        month = [Date.UTC(month[0], month[1], month[2])];
+        feData.push([month[0], pp[i]['ERROR']]);
+      }
     }
-    if (performance[i]['FCSTEP'] == 3) {
-      pcData3.push([performance[i]['METHOD'], performance[i]['MSE'], performance[i]['FCA'], performance[i]['MAPE'], performance[i]['PIS'], performance[i]['MAE'], performance[i]['ME'], performance[i]['MASE'], performance[i]['RMSE'], performance[i]['SMAPE'], performance[i]['SAPIS'], performance[i]['ACR'], performance[i]['MAR'], performance[i]['MSR']]);
+    var newSeries = [{
+      data: feData
+    }];
+    this.chart2.update({
+      series: newSeries
+
+    })
+
+    console.log("Methode!");
+  }
+
+
+  createMethodsTable() {
+    var table: HTMLTableElement = <HTMLTableElement>document.getElementById("methodTable");
+  
+    for (var i = 0; i < methods.length; i++) {
+      var row = table.insertRow(i + 1);
+      var countCell = row.insertCell(0);
+      var methodCell = row.insertCell(1);
+      var scoreCell = row.insertCell(2);
+      countCell.innerHTML = stringify(i + 1);
+      methodCell.innerHTML = methods[i]['METHOD'];
+      scoreCell.innerHTML = methods[i]['SCORE'];
     }
-
-  }
-
-  if (fcStep == "2") {
-    pcData = pcData2
-  }
-
-  if (fcStep == "3") {
-    pcData = pcData2
-  }
-
-  var performanceIndex
-  switch (btPC.value) {
-    case 'MSE': performanceIndex = 1; break;
-    case 'FCA': performanceIndex = 2; break;
-    case 'MAPE': performanceIndex = 3; break;
-    case 'PIS': performanceIndex = 4; break;
-    case 'MAE': performanceIndex = 5; break;
-    case 'ME': performanceIndex = 6; break;
-    case 'MASE': performanceIndex = 7; break;
-    case 'RMSE': performanceIndex = 8; break;
-    case 'SMAPE': performanceIndex = 9; break;
-    case 'SAPIS': performanceIndex = 10; break;
-    case 'ACR': performanceIndex = 11; break;
-    case 'MAR': performanceIndex = 12; break;
-    case 'MSR': performanceIndex = 13; break;
-  }
-
-  for (var i = 0; i < pcData.length; i++) {
-    pcData[i] = [pcData[i][0], pcData[i][performanceIndex]];
   }
 
 
+  createBTOptions() {
+    var btMethod: HTMLSelectElement = <HTMLSelectElement>document.getElementById("BTMethod");
+    var btPC: HTMLSelectElement = <HTMLSelectElement>document.getElementById("BTPC");
+  
+  
+    for (var i = 0; i < methods.length; i++) {
+      var opt = document.createElement('option');
+      opt.value = methods[i]['METHOD'];
+      opt.text = methods[i]['METHOD'];
+      btMethod.add(opt, btMethod.options.length);
+    }
+  
+  }
 
-  document.addEventListener('DOMContentLoaded', function () {
-    const chart = Highcharts.chart('FCGraph1', {
-      chart: {
-        type: 'column',
-        reflow: true
-      },
-      legend: { enabled: false },
-      title: {
-        text: performanceCriterionName,
-        style: {
-          fontSize: '10px',
-        }
-      },
-      xAxis: {
-        type: 'category'
-      },
 
-      yAxis: {
-      },
-
-      series: [{
-        name: performanceCriterionName,
-        data: pcData
-      }, {
-      }]
+  createGraph1() {
+    var btPC: HTMLSelectElement = <HTMLSelectElement>document.getElementById("BTPC");
+    var btFCStep: HTMLSelectElement = <HTMLSelectElement>document.getElementById("BTFCStep");
+    var btMethod: HTMLSelectElement = <HTMLSelectElement>document.getElementById("BTMethod");
+    var performanceCriterionName;
+    var performanceCriterion;
+  
+  
+  
+  
+    var Highcharts = require('highcharts');
+    // Load module after Highcharts is loaded
+    require('highcharts/modules/exporting')(Highcharts);
+    btPC.value = info['CRITERION'];
+    switch (info['CRITERION']) {
+      case 'FCA': performanceCriterionName = "Forecast Accuracy"; break;
+      case 'PIS': performanceCriterionName = "Periods in Stock"; break;
+      default: performanceCriterionName = "Performance Criterion";
+  
+    }  btPC.value = info['CRITERION'];
+    switch (info['CRITERION']) {
+      case 'FCA': performanceCriterionName = "Forecast Accuracy"; break;
+      case 'PIS': performanceCriterionName = "Periods in Stock"; break;
+      default: performanceCriterionName = "Performance Criterion";
+  
+    }
+    var pcData;
+    var pcData2 = [];
+    var pcData3 = [];
+    var fcStep = btFCStep.value;
+    for (var i = 0; i < performance.length; i++) {
+      if (performance[i]['FCSTEP'] == 2) {
+        pcData2.push([performance[i]['METHOD'], performance[i]['MSE'], performance[i]['FCA'], performance[i]['MAPE'], performance[i]['PIS'], performance[i]['MAE'], performance[i]['ME'], performance[i]['MASE'], performance[i]['RMSE'], performance[i]['SMAPE'], performance[i]['SAPIS'], performance[i]['ACR'], performance[i]['MAR'], performance[i]['MSR']]);
+      }
+      if (performance[i]['FCSTEP'] == 3) {
+        pcData3.push([performance[i]['METHOD'], performance[i]['MSE'], performance[i]['FCA'], performance[i]['MAPE'], performance[i]['PIS'], performance[i]['MAE'], performance[i]['ME'], performance[i]['MASE'], performance[i]['RMSE'], performance[i]['SMAPE'], performance[i]['SAPIS'], performance[i]['ACR'], performance[i]['MAR'], performance[i]['MSR']]);
+      }
+  
+    }
+  
+    if (fcStep == "2") {
+      pcData = pcData2
+    }
+  
+    if (fcStep == "3") {
+      pcData = pcData2
+    }
+  
+    var performanceIndex
+    switch (btPC.value) {
+      case 'MSE': performanceIndex = 1; break;
+      case 'FCA': performanceIndex = 2; break;
+      case 'MAPE': performanceIndex = 3; break;
+      case 'PIS': performanceIndex = 4; break;
+      case 'MAE': performanceIndex = 5; break;
+      case 'ME': performanceIndex = 6; break;
+      case 'MASE': performanceIndex = 7; break;
+      case 'RMSE': performanceIndex = 8; break;
+      case 'SMAPE': performanceIndex = 9; break;
+      case 'SAPIS': performanceIndex = 10; break;
+      case 'ACR': performanceIndex = 11; break;
+      case 'MAR': performanceIndex = 12; break;
+      case 'MSR': performanceIndex = 13; break;
+    }
+  
+    for (var i = 0; i < pcData.length; i++) {
+      pcData[i] = [pcData[i][0], pcData[i][performanceIndex]];
+    }
+  
+  
+  
+    document.addEventListener('DOMContentLoaded', function () {
+      const chart = Highcharts.chart('FCGraph1', {
+        chart: {
+          type: 'column',
+          reflow: true
+        },
+        legend: { enabled: false },
+        title: {
+          text: performanceCriterionName,
+          style: {
+            fontSize: '10px',
+          }
+        },
+        xAxis: {
+          type: 'category'
+        },
+  
+        yAxis: {
+        },
+  
+        series: [{
+          name: performanceCriterionName,
+          data: pcData
+        }, {
+        }]
+      });
+  
     });
-
-  });
+  
+  }
+  
+  
+  createGraph2() {
+    var btFCStep: HTMLSelectElement = <HTMLSelectElement>document.getElementById("BTFCStep");
+  
+    // Load module after Highcharts is loaded
+  }
 
 }
 
 
-function createGraph2() {
-  var btFCStep: HTMLSelectElement = <HTMLSelectElement>document.getElementById("BTFCStep");
 
-  // Load module after Highcharts is loaded
-}
+
+
+
+
+
+
+
+
 
 
 

@@ -194,6 +194,7 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
 
     );
 
+    
     this.directLine
       .postActivity({
         from: { id: "USER_ID", name: "USER_NAME" },
@@ -205,6 +206,7 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
         },
         error => console.log(`Error posting activity ${error}`)
       );
+      
 
   }
 
