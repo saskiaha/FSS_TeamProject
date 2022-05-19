@@ -15,9 +15,10 @@ import { FunctionService } from './shared/function.services';
 import { SimpleService } from './shared/simple.services';
 import { CheckUpService } from './shared/checkup.services';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@progress/kendo-angular-layout';
 //import { RippleModule } from '@progress/kendo-angular-ripple';
 import { InputsModule } from '@progress/kendo-angular-inputs';
@@ -57,9 +58,12 @@ declare var $: any;
     ChartsModule,
     DropDownsModule,
     FormsModule,
-    //GridModule 
+    //GridModule
+    MatTooltipModule,
   ],
   providers: [DrillDownService, FunctionService, SimpleService, CheckUpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+

@@ -16,6 +16,8 @@ import {
 import { Console } from 'console';
 import { line } from 'd3';
 import { typeWithParameters } from '@angular/compiler/src/render3/util';
+import * as jBox from 'jbox';
+import 'jbox/dist/jBox.all.css';
 
 /**
  * Declares the WebChat property on the window object.
@@ -29,6 +31,8 @@ declare global {
 
 
 window.WebChat = window.WebChat || {};
+var Highcharts = require('highcharts');
+require('highcharts/modules/exporting')(Highcharts);
 
 @Component({
   selector: 'app-overview',
@@ -50,6 +54,7 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
   public currentTime;
   public treatment;
   public task;
+  public manualUsed = false;
 
   //Conversational Agent
   public directLine;
@@ -136,6 +141,10 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
       }
     };
 */
+    //Get treatment
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const art = urlParams.get('code');
 
 
     this.store = window.WebChat.createStore(
@@ -242,10 +251,15 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
     window.addEventListener('webchatincomingactivity', this.webChatHandler.bind(this));
     window.addEventListener("message", this.messageHandler.bind(this), false);
 
+    var tooltips = document.getElementsByClassName('fas fa-info-circle');
+    for (var i = 0; i < tooltips.length; i++) {
+      tooltips[i].addEventListener('mouseover', (e) => this.countHover(e));
+    }
   }
 
   public ngAfterContentInit() {
     this.initialize();
+
   }
 
 
@@ -324,25 +338,242 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
     if(target == "Summary"){
       document.getElementById("Summary").style.display = 'block';
       document.getElementById("Article").style.display = 'none';
+
+      document.getElementById("navSummary").className = 'selected';
+      document.getElementById("navArticleForecast").className = '';
       this.status = "Summary"
     }
     else if(target == "Article Forecast"){
       document.getElementById("Article").style.display = 'block';
       document.getElementById("Summary").style.display = 'none';
+
+      document.getElementById("navSummary").className = '';
+      document.getElementById("navArticleForecast").className = 'selected';
+
       this.status = "Article"
 
     }
   }
 
+  openManual() {
+    window.open('assets/ADFUserManual.pdf', 'ADF User Manual');
+    this.manualUsed = true;
+  }
+
   hideChat(){
     document.getElementById("chatIcon").style.display = 'block';
     document.getElementById("webChat").style.display = 'none';
+    document.getElementById("main").style.width = '98%';
+    for (var i = 0; i < Highcharts.charts.length; i++) {
+      Highcharts.charts[i].reflow();
+    }
+    this.dehighlight();
+
   }
 
   showChat(){
     document.getElementById("webChat").style.display = 'block';
     document.getElementById("chatIcon").style.display = 'none';
+    document.getElementById("main").style.width = '75%';
+    for (var i = 0; i < Highcharts.charts.length; i++) {
+      Highcharts.charts[i].reflow();
+    }
+    this.highlight("Package Size");
   }
+
+  highlight(term) {
+    this.dehighlight();
+
+    switch (term) {
+      case "GrArticle":
+        if (this.status == "Summary") {
+          var table: HTMLTableElement = <HTMLTableElement>document.getElementById("summaryTable");
+          for (var r = 0, n = table.rows.length; r < n; r++) {
+            table.rows[r].cells[0].classList.add("highlight");
+          }
+        }
+        break;
+      case "Locking Period":
+        if (this.status == "Summary") {
+          var table: HTMLTableElement = <HTMLTableElement>document.getElementById("summaryTable");
+          for (var r = 0, n = table.rows.length; r < n; r++) {
+            table.rows[r].cells[1].classList.add("highlight");
+          }
+        }
+        break;
+      case "Article Text":
+        if (this.status == "Summary") {
+          var table: HTMLTableElement = <HTMLTableElement>document.getElementById("summaryTable");
+          for (var r = 0, n = table.rows.length; r < n; r++) {
+            table.rows[r].cells[2].classList.add("highlight");
+          }
+          
+        }
+        document.getElementById("subMenuBar").children[0].classList.add("highlight");
+        document.getElementById("subMenuBar").children[1].classList.add("highlight");
+        document.getElementById("subMenuBar").children[2].classList.add("highlight");
+        break;
+      case "SBU":
+          var table: HTMLTableElement = <HTMLTableElement>document.getElementById("summaryTable");
+          for (var r = 0, n = table.rows.length; r < n; r++) {
+            table.rows[r].cells[3].classList.add("highlight");
+          }
+        if (!document.getElementById("valuesInformation").classList.contains("selected")) {
+          document.getElementById("valuesInformation").classList.add("highlight");
+        }
+        document.getElementById("FMBoxWide").firstElementChild.children[1].children[2].classList.add("highlightBox");
+        break;
+      case "High-Touch":
+      case "Low-Touch":
+      case "No-Touch":
+      case "Random":
+      case "Segmentation":
+          var table: HTMLTableElement = <HTMLTableElement>document.getElementById("summaryTable");
+        for (var r = 0, n = table.rows.length; r < n; r++) {
+          table.rows[r].cells[6].classList.add("highlight");
+        }
+            if (!document.getElementById("valuesInformation").classList.contains("selected")) {
+              document.getElementById("valuesInformation").classList.add("highlight");
+            }
+            document.getElementById("FMBoxWide").firstElementChild.children[2].firstElementChild.classList.add("highlightBox");
+        
+        break;
+      case "TS Class":
+        if (this.status == "Summary") {
+          var table: HTMLTableElement = <HTMLTableElement>document.getElementById("summaryTable");
+          for (var r = 0, n = table.rows.length; r < n; r++) {
+            table.rows[r].cells[7].classList.add("highlight");
+          }
+        }
+        break;
+      case "Seasonal":
+        if (this.status == "Summary") {
+          var table: HTMLTableElement = <HTMLTableElement>document.getElementById("summaryTable");
+          for (var r = 0, n = table.rows.length; r < n; r++) {
+            table.rows[r].cells[8].classList.add("highlight");
+          }
+        }
+        break;
+      case "ABC":
+        if (this.status == "Summary") {
+          var table: HTMLTableElement = <HTMLTableElement>document.getElementById("summaryTable");
+          for (var r = 0, n = table.rows.length; r < n; r++) {
+            table.rows[r].cells[9].classList.add("highlight");
+          }
+        }
+        break;
+      case "STFC Level":
+          var table: HTMLTableElement = <HTMLTableElement>document.getElementById("summaryTable");
+          for (var r = 0, n = table.rows.length; r < n; r++) {
+            table.rows[r].cells[11].classList.add("highlight");
+          }
+        if (!document.getElementById("valuesInformation").classList.contains("selected")) {
+          document.getElementById("valuesInformation").classList.add("highlight");
+        }
+        document.getElementById("FMBoxShort").firstElementChild.lastElementChild.classList.add("highlightBox");
+        break;
+      case "STFC Method":
+          var table: HTMLTableElement = <HTMLTableElement>document.getElementById("summaryTable");
+          for (var r = 0, n = table.rows.length; r < n; r++) {
+            table.rows[r].cells[12].classList.add("highlight");
+            if (!document.getElementById("valuesInformation").classList.contains("selected")) {
+              document.getElementById("valuesInformation").classList.add("highlight");
+            }
+            document.getElementById("FMBoxShort").firstElementChild.children[2].classList.add("highlightBox");
+        }
+        break;
+
+      case "Article Forecast":
+          document.getElementById("navArticleForecast").classList.add("highlightPos");
+        break;
+      case "Time Series":
+        if (this.status == "Summary") {
+          document.getElementById("navArticleForecast").classList.add("highlightPos");
+        }
+        document.getElementById("container").classList.add("highlight");
+        document.getElementById("Values").classList.add("highlight");
+        if (!document.getElementById("valuesButton").classList.contains("selected")) {
+           document.getElementById("valuesButton").classList.add("highlight");
+        }
+        break;
+      case "Package Size":
+        if (this.status == "Summary") {
+          document.getElementById("navArticleForecast").classList.add("highlightPos");
+        }
+        if (!document.getElementById("valuesInformation").classList.contains("selected")) {
+          document.getElementById("valuesInformation").classList.add("highlight");
+        }
+        document.getElementById("FMBoxWide").firstElementChild.children[2].children[1].classList.add("highlightBox");
+        break;
+      case "Data-based Package Size":
+        if (this.status == "Summary") {
+          document.getElementById("navArticleForecast").classList.add("highlightPos");
+        }
+        if (!document.getElementById("valuesInformation").classList.contains("selected")) {
+          document.getElementById("valuesInformation").classList.add("highlight");
+        }
+        document.getElementById("FMBoxWide").firstElementChild.children[2].children[2].classList.add("highlightBox");
+        break;
+      case "Historical Data":
+        if (this.status == "Summary") {
+          document.getElementById("navArticleForecast").classList.add("highlightPos");
+
+        }
+        if (!document.getElementById("valuesButton").classList.contains("selected")) {
+          document.getElementById("valuesButton").classList.add("highlight");
+        }
+        document.getElementById("subMenu").classList.add("highlight");
+        break;
+    }
+    var time = 20;
+    this.refreshInterval = setInterval(() => {
+      time--;
+      if (time == 0) {
+        this.dehighlight();
+      }
+
+    }, 1000);
+
+  
+  }
+
+    dehighlight() {
+
+      var elems = document.querySelectorAll(".highlight");
+
+      [].forEach.call(elems, function (el) {
+        el.classList.remove("highlight");
+      });
+
+      var elems = document.querySelectorAll(".highlightPos");
+
+      [].forEach.call(elems, function (el) {
+        el.classList.remove("highlightPos");
+      });
+
+      var elems = document.querySelectorAll(".highlightBox");
+
+      [].forEach.call(elems, function (el) {
+        el.classList.remove("highlightBox");
+      });
+    
+
+  }counth
+
+  countHover(e) {
+    var startTime = Date.now();
+    var id = e['target'].id;
+    var element = document.getElementById(id);
+
+    element.onmouseout = function () {
+      var endTime = Date.now();
+      var duration = endTime - startTime;
+      if (duration > 1000) {
+        console.log(id + ": " + duration);
+      }
+    }
+  }
+
 
 }
 

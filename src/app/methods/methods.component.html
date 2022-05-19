@@ -1,57 +1,62 @@
 <div class="FMBox">
-    Tested Methods
-    <div style="margin-top: 10px;">
+  Tested Methods
 
-        <table id='methodTable'>
-            <tr>
-                <th></th>
-                <th>Method</th>
-                <th>Score</th>
-            </tr>
-        </table>
+  <div style="margin-top: 10px; max-height: 300px; overflow-y: auto;">
 
-    </div>
+    <table id='methodTable'>
+      <tr>
+        <th></th>
+        <th>Method</th>
+        <th>Score</th>
+      </tr>
+    </table>
+
+  </div>
 </div>
 <div class="FMBox">
-    <br />
+  <br />
 
-    <div
-        style="border-style: solid; border-width: 4px; border-color:#dbe9f0; border-radius: 2px; padding: 10px 20px; margin-top: 10px;">
-        Backtest Settings
-        <div style="padding: 4px">
-            Forecast Method <br>
-            <select name="BTMethod" id="BTMethod" style="width: 100%" (change) ="updateChart2()">
-            </select>
-        </div>
-        <div style="padding: 4px">
-            Forecast Step <br>
-            <select name="FCStep" id="BTFCStep" style="width: 100%">
-                <option value="2">2-months-ahead</option>
-                <option value="3">3-months-ahead</option>
-            </select>
-        </div>
-
-        <div style="padding: 4px">
-            Performance Criterion <br>
-            <select name="BTPC" id="BTPC" style="width: 100%">
-              <option value="PIS">PIS</option>
-              <option value="MSE">MSE</option>
-              <option value="ME">ME</option>
-              <option value="ABC">ABC</option>
-              <option value="FCA">FCA</option>
-            </select>
-        </div>
-        <div style="padding: 4px">
-            Forecast Errors <br>
-            <select name="FCErrors" id="FCErrors" style="width: 100%">
-                <option value="Errors">Errors</option>
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
-            </select>
-        </div>
-
+  <div style="border-style: solid; border-width: 4px; border-color:#dbe9f0; border-radius: 2px; padding: 10px 20px; margin-top: 10px;">
+    Backtest Settings
+    <div style="padding: 4px">
+      Forecast Method
+      <i id="IBTMethod"
+         class="fas fa-info-circle"
+         #tooltip="matTooltip"
+         matTooltip="During the forecast run, based on the given data, multiple statistical Forecast Methods are tested and analyzed. The best fitting method is then used for the final forecast. Backtest Forecasts are created for certain Forecast Steps and the results are compared to the actual values. Based on their overall test performance the methods are ranked and the best-fitting method selected. ADF is a complicated, highly automated forecasting system, so it will be difficult to test or recreate the forecast calculation by yourself. In the Forecast Methods subsection of the Article Forecast section you can see a ranking of the best-fitting forecast methods for the backtesting period. Selecting a method will plot the forecasts and show the method's accuracy and error. This will explain why a certain method has been chosen."
+         matTooltipPosition="above"></i><br>
+      <select name="BTMethod" id="BTMethod" style="width: 100%" (change)="updateCharts()">
+      </select>
     </div>
+    <div style="padding: 4px">
+      Forecast Step <br>
+      <select name="FCStep" id="BTFCStep" style="width: 100%" (change)="updateCharts()" disabled>
+        <option value="2">2-months-ahead</option>
+        <option value="3">3-months-ahead</option>
+      </select>
+    </div>
+
+    <div style="padding: 4px">
+      Performance Criterion <br>
+      <select name="BTPC" id="BTPC" style="width: 100%" (change)="updateCharts()" disabled>
+        <option value="PIS">PIS</option>
+        <option value="MSE">MSE</option>
+        <option value="ME">ME</option>
+        <option value="ABC">ABC</option>
+        <option value="FCA">FCA</option>
+      </select>
+    </div>
+    <div style="padding: 4px">
+      Forecast Errors <br>
+      <select name="FCErrors" id="FCErrors" style="width: 100%" disabled>
+        <option value="Errors">Errors</option>
+        <option value=""></option>
+        <option value=""></option>
+        <option value=""></option>
+      </select>
+    </div>
+
+  </div>
 
 </div>
 

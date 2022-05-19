@@ -68,10 +68,14 @@ body {
   li a:hover {
 	color:#005981;
   }
-  
-  .selected {
-	color:#005981;
-  }
+
+a:not([href]):not([class]) {
+  color: #99D3ED;
+}
+
+.selected {
+  color: #005981;
+}
   
   #menuBarLine {
 	margin-top: -14px;
@@ -241,4 +245,3 @@ body {
 	font-size: 14px;
 	float: left;
   }
-  

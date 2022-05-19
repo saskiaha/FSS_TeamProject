@@ -35,6 +35,13 @@ import { Console } from "console";
 //import { DropDownListComponent } from '@progress/kendo-angular-dropdowns';
 
 import * as $ from 'jquery';
+import { MatTooltipModule } from '@angular/material/tooltip';
+
+
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const articleNumber = urlParams.get('code');
+
 
 @Component({
   selector: "app-information",
@@ -131,7 +138,7 @@ export class Information implements OnInit, AfterViewInit {
 
           }
           /**/
-          const article = require('assets/Article1.json');
+          const article = this.getArticle(this.task);
           var info = article['INFO'];
           this.AggregationLevel = info['DATALEVEL'];
           this.ArticleID = info['ARTICLENAME'];
@@ -161,16 +168,27 @@ export class Information implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
+
   }
 
   public ngAfterViewInit(): void {
     parent.postMessage("IframeLoaded", "*")
     //console.log('Site Loaded')
 
-
   }
-
-
+  
+getArticle(num) {
+  var data = 0;
+  if (num == 1) {
+    data = require("assets/Article1.json");
+  } else if (num == 2) {
+    data = require("assets/Article2.json");
+  } else if (num == 3) {
+    data = require("assets/Article3.json");
+  }
+  console.log(data);
+  return data;
+}
 
 
 

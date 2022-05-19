@@ -10,3 +10,12 @@ select:disabled, select[disabled]{
   button:disabled, button[disabled]{
     color:black
   }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-tooltip {
+    font-size: 1.3vh !important;
+    font-weight: 300 !important;
+    line-height: 18px !important;
+}

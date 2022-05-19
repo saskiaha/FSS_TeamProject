@@ -1,27 +1,21 @@
 <div id="mainInformation">
-    <select name="BU" id="BU">
-        <option value="BU1">Z7091A01</option>
-        <option value="BU2">Bussines Unit 2</option>
-        <option value="BU3">Bussines Unit 3</option>
-        <option value="BU4">Bussines Unit 4</option>
+    <select name="BU" id="BU" disabled>
+      <option value="BU1">Z1234A01</option>
     </select>
     <div id="month">June 2021</div>
     <div id="filterbox">
         <div class="filter">
-            Level <button class="splitButton"><i class="fas fa-sitemap"></i>
+            Level <button class="splitButton"><i class="fas fa-sitemap" disabled></i>
                 <p class="grayButton">Article</p>
             </button>
         </div>
         <div class="filter">
-            Filter <button class="splitButton"><i class="fas fa-filter"></i>
+            Filter <button class="splitButton"><i class="fas fa-filter" disabled></i>
                 <p class="grayButton">OFF</p>
             </button>
         </div>
-        <select class="selectGray" name="filterSettings" id="filterSet">
+        <select class="selectGray" name="filterSettings" id="filterSet" disabled>
             <option value="FS1">Filter Settings</option>
-            <option value="FS2">Filter Settings 2</option>
-            <option value="FS3">Filter Settings 3</option>
-            <option value="FS4">Filter Settings 4</option>
         </select>
     </div>
 </div>
@@ -35,253 +29,60 @@
                     <p class="grayButton">OFF</p>
                 </button>
             </div>
-            <select class="selectGray" name="downloads" id="downloads">
+            <select class="selectGray" name="downloads" id="downloads" disabled>
                 <option value="FS1">Downloads</option>
-                <option value="FS2">Downloads 2</option>
-                <option value="FS3">Downloads 3</option>
-                <option value="FS4">Downloads 4</option>
             </select>
         </div>
     </div>
-    <table>
-        <tr onclick="showFC()">
+    <table id="summaryTable">
+        <tr>
             <th>GrArticle</th>
-            <th>Locking Period</th>
+            <th>
+              Locking Period
+              <i id="LockingPeriod"
+                class="fas fa-info-circle"
+                #tooltip="matTooltip"
+                matTooltip="The locking period refers to months in the future that are locked against changes to forecast data. It is useful in cases of long transportation times or purpose-built items, where planning needs to happen ahead of time. The locking period takes effect in the ADF forecast calculation. The locking period is considered as explicit part of your planning and forecast level. The locking period is a business-specific setting that is maintained in SAP APO."
+                matTooltipPosition="above"></i>
+            </th>
             <th>Article Text</th>
             <th>SBU</th>
             <th>Country</th>
             <th>Alphacode</th>
-            <th>Segmentation</th>
-            <th>TS Class</th>
-            <th>Seasonal</th>
+            <th>
+              Segmentation
+              <i id="Segmentation"
+                 class="fas fa-info-circle"
+                 #tooltip="matTooltip"
+                 matTooltip="ADF's segmentation is two-dimensional: it considers sales volume and forecast accuracy. Based on an ABC analysis, A/B articles (95% of cumulative sales volume) are moved to the focus area. By comparing the forecast accuracy of the statistical and the regional marketing forecast, articles are segmented as High-Touch (HT) or Low-Touch (LT). C articles are moved to the non-focus area and segmented as No-Touch (NT) or Random (RD). If you calculate and compare the forecast accuracy of the statistical (ADF) forecast and the manually adjusted sales, local and / or regional marketing forecasts, you will be able to check whether the segmentation worked correctly."
+                 matTooltipPosition="above"></i>
+            </th>
+            <th>TS Class
+              <i id="TSClass"
+                 class="fas fa-info-circle"
+                 #tooltip="matTooltip"
+                 matTooltip="In general, article time series can differ in type and quality. There are time series with many zeros in its data history, time series with continuous demand and classical time series patterns such as trend and seasonality, time series with a short or long data history etc. ADF distinguishes between six main time series classes: ZeroObservations, OneObservation, Smooth, Erratic, Lumpy, Sporadic. You can see the historical time series in the article's plot or value table in the Article Forecast section and already from looking at it guess what class of time series it is. "
+                 matTooltipPosition="above"></i></th>
+            <th>Seasonal
+              <i id="Seasonality"
+                 class="fas fa-info-circle"
+                 #tooltip="matTooltip"
+                 matTooltip="Seasonality is a repeating pattern within a year, e.g. peaks in the summer, drops in the winter or a peak in every first month of a quarter. You can see the historical time series in the article's plot or value table in the Article Forecast section. Seasonality does not have to be based on the actual seasons, but can be any repeating pattern within a year. "
+                 matTooltipPosition="above"></i></th>
             <th>ABC</th>
             <th>Warning</th>
-            <th>STFC Level</th>
-            <th>STFC Method</th>
-        </tr>
-        <tr onclick="showFC()">
-            <td>500062</td>
-            <td>0</td>
-            <td>PHENOXYPROPANOL</td>
-            <td>EMU</td>
-            <td>Mixed</td>
-            <td>NBP</td>
-            <td>NS</td>
-            <td>Smooth</td>
-            <td>No</td>
-            <td>B</td>
-            <td></td>
-            <td>GrArticle</td>
-            <td>MA 3</td>
-
-        </tr>
-        <tr onclick="showFC()">
-            <td>500062</td>
-            <td>0</td>
-            <td>PHENOXYPROPANOL</td>
-            <td>EMU</td>
-            <td>Mixed</td>
-            <td>NBP</td>
-            <td>NS</td>
-            <td>Smooth</td>
-            <td>No</td>
-            <td>B</td>
-            <td></td>
-            <td>GrArticle</td>
-            <td>MA 3</td>
-
-        </tr>
-        <tr onclick="showFC()">
-            <td>500062</td>
-            <td>0</td>
-            <td>PHENOXYPROPANOL</td>
-            <td>EMU</td>
-            <td>Mixed</td>
-            <td>NBP</td>
-            <td>NS</td>
-            <td>Smooth</td>
-            <td>No</td>
-            <td>B</td>
-            <td></td>
-            <td>GrArticle</td>
-            <td>MA 3</td>
-
-        </tr>
-        <tr onclick="showFC()">
-            <td>500062</td>
-            <td>0</td>
-            <td>PHENOXYPROPANOL</td>
-            <td>EMU</td>
-            <td>Mixed</td>
-            <td>NBP</td>
-            <td>NS</td>
-            <td>Smooth</td>
-            <td>No</td>
-            <td>B</td>
-            <td></td>
-            <td>GrArticle</td>
-            <td>MA 3</td>
-
-        </tr>
-        <tr onclick="showFC()">
-            <td>500062</td>
-            <td>0</td>
-            <td>PHENOXYPROPANOL</td>
-            <td>EMU</td>
-            <td>Mixed</td>
-            <td>NBP</td>
-            <td>NS</td>
-            <td>Smooth</td>
-            <td>No</td>
-            <td>B</td>
-            <td></td>
-            <td>GrArticle</td>
-            <td>MA 3</td>
-
-        </tr>
-        <tr onclick="showFC()">
-            <td>500062</td>
-            <td>0</td>
-            <td>PHENOXYPROPANOL</td>
-            <td>EMU</td>
-            <td>Mixed</td>
-            <td>NBP</td>
-            <td>NS</td>
-            <td>Smooth</td>
-            <td>No</td>
-            <td>B</td>
-            <td></td>
-            <td>GrArticle</td>
-            <td>MA 3</td>
-
-        </tr>
-        <tr onclick="showFC()">
-            <td>500062</td>
-            <td>0</td>
-            <td>PHENOXYPROPANOL</td>
-            <td>EMU</td>
-            <td>Mixed</td>
-            <td>NBP</td>
-            <td>NS</td>
-            <td>Smooth</td>
-            <td>No</td>
-            <td>B</td>
-            <td></td>
-            <td>GrArticle</td>
-            <td>MA 3</td>
-
-        </tr>
-        <tr onclick="showFC()">
-            <td>500062</td>
-            <td>0</td>
-            <td>PHENOXYPROPANOL</td>
-            <td>EMU</td>
-            <td>Mixed</td>
-            <td>NBP</td>
-            <td>NS</td>
-            <td>Smooth</td>
-            <td>No</td>
-            <td>B</td>
-            <td></td>
-            <td>GrArticle</td>
-            <td>MA 3</td>
-
-        </tr>
-        <tr onclick="showFC()">
-            <td>500062</td>
-            <td>0</td>
-            <td>PHENOXYPROPANOL</td>
-            <td>EMU</td>
-            <td>Mixed</td>
-            <td>NBP</td>
-            <td>NS</td>
-            <td>Smooth</td>
-            <td>No</td>
-            <td>B</td>
-            <td></td>
-            <td>GrArticle</td>
-            <td>MA 3</td>
-
-        </tr>
-        <tr onclick="showFC()">
-            <td>500062</td>
-            <td>0</td>
-            <td>PHENOXYPROPANOL</td>
-            <td>EMU</td>
-            <td>Mixed</td>
-            <td>NBP</td>
-            <td>NS</td>
-            <td>Smooth</td>
-            <td>No</td>
-            <td>B</td>
-            <td></td>
-            <td>GrArticle</td>
-            <td>MA 3</td>
-
-        </tr>
-        <tr onclick="showFC()">
-            <td>500062</td>
-            <td>0</td>
-            <td>PHENOXYPROPANOL</td>
-            <td>EMU</td>
-            <td>Mixed</td>
-            <td>NBP</td>
-            <td>NS</td>
-            <td>Smooth</td>
-            <td>No</td>
-            <td>B</td>
-            <td></td>
-            <td>GrArticle</td>
-            <td>MA 3</td>
-
-        </tr>
-        <tr onclick="showFC()">
-            <td>500062</td>
-            <td>0</td>
-            <td>PHENOXYPROPANOL</td>
-            <td>EMU</td>
-            <td>Mixed</td>
-            <td>NBP</td>
-            <td>NS</td>
-            <td>Smooth</td>
-            <td>No</td>
-            <td>B</td>
-            <td></td>
-            <td>GrArticle</td>
-            <td>MA 3</td>
-
-        </tr>
-        <tr onclick="showFC()">
-            <td>500062</td>
-            <td>0</td>
-            <td>PHENOXYPROPANOL</td>
-            <td>EMU</td>
-            <td>Mixed</td>
-            <td>NBP</td>
-            <td>NS</td>
-            <td>Smooth</td>
-            <td>No</td>
-            <td>B</td>
-            <td></td>
-            <td>GrArticle</td>
-            <td>MA 3</td>
-
-        </tr>
-        <tr onclick="showFC()">
-            <td>500062</td>
-            <td>0</td>
-            <td>PHENOXYPROPANOL</td>
-            <td>EMU</td>
-            <td>Mixed</td>
-            <td>NBP</td>
-            <td>NS</td>
-            <td>Smooth</td>
-            <td>No</td>
-            <td>B</td>
-            <td></td>
-            <td>GrArticle</td>
-            <td>MA 3</td>
-
+            <th>STFC Level
+              <i id="STFCLevel"
+                 class="fas fa-info-circle"
+                 #tooltip="matTooltip"
+                 matTooltip="ADF is calculating forecasts for two years into the future: the first year is the short-term, the second the long-term forecast. For both, the best-fitting method and best-fitting forecast level (only applicable if the Feedback Loop has been activated) are automatically chosen. ADF is a complicated, highly automated forecasting system, so it will be difficult to test or recreate the forecast calculation by yourself. If you have activated the Feedback Loop, you can check the article level and article customer level forecasts and their performance (forecast accuracy / error) for the backtesting period. This will explain why a certain level has been chosen."
+                 matTooltipPosition="above"></i></th>
+            <th>STFC Method
+              <i id="LTFCMethod"
+                 class="fas fa-info-circle"
+                 #tooltip="matTooltip"
+                 matTooltip="ADF is calculating forecasts for two years into the future: the first year is the short-term, the second the long-term forecast. For both, the best-fitting forecast method and level only applicable if the Feedback Loop has been activated) are automatically chosen."
+                 matTooltipPosition="above"></i></th>
         </tr>
 
 
@@ -290,8 +91,8 @@
 </div>
 
 <footer>
-    <div style="float:left">Showing 1 to 25 of 2666 entries</div>
-    <div style="float:right; margin-right: 20px">Page 1 of 107</div>
+    <div style="float:left">Showing 1 to 3 of 3 entries</div>
+    <div style="float:right; margin-right: 20px">Page 1 of 1</div>
     <div style="float:right; margin-right: 20px">Articles per Page: 25</div>
 
 </footer>

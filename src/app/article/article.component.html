@@ -1,16 +1,14 @@
 <main>
 <div id="mainInformation">
-    <select name="BU-Article" id="BU-Article">
-        <option value="BU1">Z7091A01 - GrArticle: 50000539</option>
-        <option value="BU2">Bussines Unit 2</option>
-        <option value="BU3">Bussines Unit 3</option>
-        <option value="BU4">Bussines Unit 4</option>
+    <select name="BU-Article" id="BU-Article" style="width: min-content" disabled>
+        <option value="BU1"> {{ ArticleID }}</option>
+
     </select>
-    <div id="articleText">PHENOXYPROPANOL 1000KG COMPOSITE IBC</div>
+    <div id="articleText">{{ ArticleName }}</div>
     <div id="filterbox">
         June 2021 
         <i class="fas fa-caret-right"></i>
-        <select name="filterArticle" id="filterArticle">
+        <select name="filterArticle" id="filterArticle" disabled>
             <option value="FA1">July 2021</option>
             <option value="FA2">Filter Settings 2</option>
             <option value="FA3">Filter Settings 3</option>
@@ -19,21 +17,21 @@
     </div>
 </div>
 <div id="mainGraphs">
-  <div id="container" style="width:85%; height:400px;"></div>
-  <!--<img src="assets/Graph_ArticleFC.png" width="85%">-->
+  <div id="container" style="width:100%; height:400px;"></div>
+
 </div>
 </main>
-<footer>
-<div class="menuBar">
-    <ul>
-        <li style="float:left"><a id="valuesButton" (click)="changeSubNav('Values')" class="selected"><i class="fas fa-table"></i>Forecast Values</a></li>
-        <li style="float:left"><a id="valuesInformation" (click)="changeSubNav('Information')"><i class="fas fa-table"></i>Information</a></li>
-        <li style="float:left"><a id="valuesMethods" (click)="changeSubNav('Methods')"><i class="fas fa-table"></i>Forecast Methods</a></li>
+
+<div class="menuBar" >
+    <ul id="subMenuBar">
+        <li style="float:left"><a (click)="changeSubNav('Values')" class="selected" id="valuesButton"><i class="fas fa-table"></i>Forecast Values</a></li>
+        <li style="float:left"><a (click)="changeSubNav('Information')" id="valuesInformation"><i class="fas fa-table"></i>Information</a></li>
+        <li style="float:left"><a (click)="changeSubNav('Methods')" id="valuesMethods"><i class="fas fa-table"></i>Forecast Methods</a></li>
     </ul>
     <hr id="menuBarLine">
     <br>
 </div>
-<div id="mainGraphs">
+<div id="subMenu">
 
 <app-values  id="Values" style="display: block;" #Values></app-values>
 <app-information id="Information" style="display: none;" #Information></app-information>
