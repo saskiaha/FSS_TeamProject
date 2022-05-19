@@ -16,7 +16,7 @@ import {
 import { Console } from 'console';
 import { line } from 'd3';
 import { typeWithParameters } from '@angular/compiler/src/render3/util';
-import * as jBox from 'jbox';
+//import * as jBox from 'jbox';
 import 'jbox/dist/jBox.all.css';
 
 /**
@@ -67,6 +67,7 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
 
   //Dashboard
   public status = "Summary"
+  public timeLeft = 0
 
 
 
@@ -151,6 +152,9 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
       {},
       ({ dispatch }) => next => action => {
         if (action.type === 'DIRECT_LINE/POST_ACTIVITY') {
+          // Dehighlight after Message is sent
+          this.dehighlight();
+
           //connect outgoing event handler and hand over reported data
           const event = new Event('webchatoutgoingactivity');
           action.payload.activity.channelData = {Task: this.task, Treatment: this.treatment, UserID: this.userID, Level: this.status };
@@ -241,6 +245,12 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
       clearInterval(this.refreshInterval);
     }
     this.refreshInterval = setInterval(() => {
+      if(this.timeLeft > 0){
+        this.timeLeft -= 1
+      }
+      else{
+        this.dehighlight();
+      }
 
     }, 1000);
 
@@ -268,8 +278,10 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
     var sheight = document.querySelectorAll("[class$=webchat__basic-transcript__scrollable]")[0].scrollHeight;
     document.querySelectorAll("[class$=webchat__basic-transcript__scrollable]")[0].scrollTo({ left: 0, top: sheight, behavior: 'auto' });
     this.noSpeechInteraction = false;
-    if ((this.router.url.includes("unitedstates") || this.router.url == "/") && (new Date((<any>event).data.timestamp) >= this.currentTime)) {  //
+    if ((<any>event).data.type == 'event') {  //
       console.log(<any>event)
+      if((<any>event).data.name == 'SystemExp')
+        this.highlight((<any>event).data.value)
       }
       else if ((<any>event).data.type == 'message' && (<any>event).data.from.name != 'Conversational-ITL') {
 
@@ -384,6 +396,7 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
   highlight(term) {
     this.dehighlight();
 
+    this.timeLeft = 30
     switch (term) {
       case "GrArticle":
         if (this.status == "Summary") {
