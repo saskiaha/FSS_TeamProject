@@ -393,7 +393,6 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
     for (var i = 0; i < Highcharts.charts.length; i++) {
       Highcharts.charts[i].reflow();
     }
-    this.highlight("Article ID");
   }
 
   highlight(term) {
