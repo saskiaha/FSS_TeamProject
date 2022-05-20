@@ -55,15 +55,16 @@ body {
 	height: 60px;
   }
 
-  
-  li a {
-	display: block;
-	color: #99D3ED;
-	text-align: center;
-	padding: 16px;
-	text-decoration: none;
-	font-size: 14px;
-  }
+
+li a {
+  display: block;
+  color: #99D3ED;
+  text-align: center;
+  padding: 16px;
+  text-decoration: none;
+  font-size: 14px;
+  cursor: pointer;
+}
   
   li a:hover {
 	color:#005981;

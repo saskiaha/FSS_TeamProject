@@ -1,7 +1,7 @@
 <div class="FMBox">
   Tested Methods
 
-  <div style="margin-top: 10px; max-height: 300px; overflow-y: auto;">
+  <div style="margin-top: 10px; max-height: 300px; overflow-y: auto;" id="methodTableBox">
 
     <table id='methodTable'>
       <tr>
@@ -13,17 +13,17 @@
 
   </div>
 </div>
-<div class="FMBox">
+<div class="FMBox" >
   <br />
 
-  <div style="border-style: solid; border-width: 4px; border-color:#dbe9f0; border-radius: 2px; padding: 10px 20px; margin-top: 10px;">
+  <div id="BTsettingsBox" style="border-style: solid; border-width: 4px; border-color:#dbe9f0; border-radius: 2px; padding: 10px 20px; margin-top: 10px;">
     Backtest Settings
     <div style="padding: 4px">
       Forecast Method
       <i id="IBTMethod"
          class="fas fa-info-circle"
          #tooltip="matTooltip"
-         matTooltip="During the forecast run, based on the given data, multiple statistical Forecast Methods are tested and analyzed. The best fitting method is then used for the final forecast. Backtest Forecasts are created for certain Forecast Steps and the results are compared to the actual values. Based on their overall test performance the methods are ranked and the best-fitting method selected. ADF is a complicated, highly automated forecasting system, so it will be difficult to test or recreate the forecast calculation by yourself. In the Forecast Methods subsection of the Article Forecast section you can see a ranking of the best-fitting forecast methods for the backtesting period. Selecting a method will plot the forecasts and show the method's accuracy and error. This will explain why a certain method has been chosen."
+         matTooltip="During the forecast run, based on the given data, multiple statistical Forecast Methods are tested and analyzed. The best fitting method is then used for the final forecast. Backtest Forecasts are created for certain Forecast Steps and the results are compared to the actual values. Based on their overall test performance the methods are ranked and the best-fitting method selected."
          matTooltipPosition="above"></i><br>
       <select name="BTMethod" id="BTMethod" style="width: 100%" (change)="updateCharts()">
       </select>
@@ -62,7 +62,7 @@
 
 
 
-<div class="FMBox">
+<div class="FMBox" id="graphBox">
   <div style="margin-top: 10px;" id='graphPC'>
     <div id="FCGraph1" style="max-height: 160px">
     </div>

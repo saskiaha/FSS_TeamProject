@@ -1,4 +1,4 @@
-<div id="mainInformation">
+<div id="sMainInformation" class="mainInformation">
     <select name="BU" id="BU" disabled>
       <option value="BU1">Z1234A01</option>
     </select>
@@ -20,7 +20,7 @@
     </div>
 </div>
 <hr>
-<div id="mainGraphs">
+<div id="summaryT">
     <div id="summaryTableHeader">
         Infoprovider Summary
         <div id="filterbox">
@@ -42,7 +42,7 @@
               <i id="LockingPeriod"
                 class="fas fa-info-circle"
                 #tooltip="matTooltip"
-                matTooltip="The locking period refers to months in the future that are locked against changes to forecast data. It is useful in cases of long transportation times or purpose-built items, where planning needs to happen ahead of time. The locking period takes effect in the ADF forecast calculation. The locking period is considered as explicit part of your planning and forecast level. The locking period is a business-specific setting that is maintained in SAP APO."
+                matTooltip="The locking period refers to months in the future that are locked against changes to forecast data. It is useful in cases of long transportation times or purpose-built items, where planning needs to happen ahead of time. The locking period takes effect in the ADF forecast calculation. The locking period is considered as explicit part of your planning and forecast level."
                 matTooltipPosition="above"></i>
             </th>
             <th>Article Text</th>
@@ -54,20 +54,20 @@
               <i id="Segmentation"
                  class="fas fa-info-circle"
                  #tooltip="matTooltip"
-                 matTooltip="ADF's segmentation is two-dimensional: it considers sales volume and forecast accuracy. Based on an ABC analysis, A/B articles (95% of cumulative sales volume) are moved to the focus area. By comparing the forecast accuracy of the statistical and the regional marketing forecast, articles are segmented as High-Touch (HT) or Low-Touch (LT). C articles are moved to the non-focus area and segmented as No-Touch (NT) or Random (RD). If you calculate and compare the forecast accuracy of the statistical (ADF) forecast and the manually adjusted sales, local and / or regional marketing forecasts, you will be able to check whether the segmentation worked correctly."
+                 matTooltip="ADF's segmentation is two-dimensional: it considers sales volume and forecast accuracy. Based on an ABC analysis, A/B articles (95% of cumulative sales volume) are moved to the focus area. By comparing the forecast accuracy of the statistical and the regional marketing forecast, articles are segmented as High-Touch (HT) or Low-Touch (LT). C articles are moved to the non-focus area and segmented as No-Touch (NT) or Random (RD)."
                  matTooltipPosition="above"></i>
             </th>
             <th>TS Class
               <i id="TSClass"
                  class="fas fa-info-circle"
                  #tooltip="matTooltip"
-                 matTooltip="In general, article time series can differ in type and quality. There are time series with many zeros in its data history, time series with continuous demand and classical time series patterns such as trend and seasonality, time series with a short or long data history etc. ADF distinguishes between six main time series classes: ZeroObservations, OneObservation, Smooth, Erratic, Lumpy, Sporadic. You can see the historical time series in the article's plot or value table in the Article Forecast section and already from looking at it guess what class of time series it is. "
+                 matTooltip="In general, article time series can differ in type and quality. There are time series with many zeros in its data history, time series with continuous demand and classical time series patterns such as trend and seasonality, time series with a short or long data history etc. ADF distinguishes between six main time series classes: ZeroObservations, OneObservation, Smooth, Erratic, Lumpy, Sporadic."
                  matTooltipPosition="above"></i></th>
             <th>Seasonal
               <i id="Seasonality"
                  class="fas fa-info-circle"
                  #tooltip="matTooltip"
-                 matTooltip="Seasonality is a repeating pattern within a year, e.g. peaks in the summer, drops in the winter or a peak in every first month of a quarter. You can see the historical time series in the article's plot or value table in the Article Forecast section. Seasonality does not have to be based on the actual seasons, but can be any repeating pattern within a year. "
+                 matTooltip="Seasonality is a repeating pattern within a year, e.g. peaks in the summer, drops in the winter or a peak in every first month of a quarter. You can see the historical time series in the article's plot or value table in the Article Forecast section. Seasonality does not have to be based on the actual seasons, but can be any repeating pattern within a year."
                  matTooltipPosition="above"></i></th>
             <th>ABC</th>
             <th>Warning</th>
@@ -75,13 +75,13 @@
               <i id="STFCLevel"
                  class="fas fa-info-circle"
                  #tooltip="matTooltip"
-                 matTooltip="ADF is calculating forecasts for two years into the future: the first year is the short-term, the second the long-term forecast. For both, the best-fitting method and best-fitting forecast level (only applicable if the Feedback Loop has been activated) are automatically chosen. ADF is a complicated, highly automated forecasting system, so it will be difficult to test or recreate the forecast calculation by yourself. If you have activated the Feedback Loop, you can check the article level and article customer level forecasts and their performance (forecast accuracy / error) for the backtesting period. This will explain why a certain level has been chosen."
+                 matTooltip="ADF is calculating forecasts for two years into the future: the first year is the short-term, the second the long-term forecast. For both, the best-fitting method and best-fitting forecast level (only applicable if the Feedback Loop has been activated) are automatically chosen."
                  matTooltipPosition="above"></i></th>
             <th>STFC Method
               <i id="LTFCMethod"
                  class="fas fa-info-circle"
                  #tooltip="matTooltip"
-                 matTooltip="ADF is calculating forecasts for two years into the future: the first year is the short-term, the second the long-term forecast. For both, the best-fitting forecast method and level only applicable if the Feedback Loop has been activated) are automatically chosen."
+                 matTooltip="ADF is calculating forecasts for two years into the future: the first year is the short-term, the second the long-term forecast. For both, the best-fitting forecast method and level (only applicable if the Feedback Loop has been activated) are automatically chosen."
                  matTooltipPosition="above"></i></th>
         </tr>
 

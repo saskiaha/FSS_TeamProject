@@ -1,7 +1,7 @@
 
 <div class="FMBoxWide" id="FMBoxWide">
 
-  <div style="border-style: solid; border-width: 4px; border-color:#dbe9f0; border-radius: 2px; padding: 10px 20px; margin-top: 10px;">
+  <div id="FMBoxWideSub"style="border-style: solid; border-width: 4px; border-color:#dbe9f0; border-radius: 2px; padding: 10px 20px; margin-top: 10px;">
     Data Information
     <hr>
     <div style="display:inline-block">
@@ -47,7 +47,7 @@
         <i id="Segmentation"
            class="fas fa-info-circle"
            #tooltip="matTooltip"
-           matTooltip="ADF's segmentation is two-dimensional: it considers sales volume and forecast accuracy. Based on an ABC analysis, A/B articles (95% of cumulative sales volume) are moved to the focus area. By comparing the forecast accuracy of the statistical and the regional marketing forecast, articles are segmented as High-Touch (HT) or Low-Touch (LT). C articles are moved to the non-focus area and segmented as No-Touch (NT) or Random (RD). If you calculate and compare the forecast accuracy of the statistical (ADF) forecast and the manually adjusted sales, local and / or regional marketing forecasts, you will be able to check whether the segmentation worked correctly."
+           matTooltip="ADF's segmentation is two-dimensional: it considers sales volume and forecast accuracy. Based on an ABC analysis, A/B articles (95% of cumulative sales volume) are moved to the focus area. By comparing the forecast accuracy of the statistical and the regional marketing forecast, articles are segmented as High-Touch (HT) or Low-Touch (LT). C articles are moved to the non-focus area and segmented as No-Touch (NT) or Random (RD)."
            matTooltipPosition= "above"></i>
         <div style="border: 1px solid #dbe9f0; padding: 4px; padding-right: 12px; margin-top: 4px; margin-bottom: 8px;">
           {{ Segmentation }}
@@ -58,7 +58,7 @@
         <i id="PackageSize"
            class="fas fa-info-circle"
            #tooltip="matTooltip"
-           matTooltip="Package Size is the defined weight (usually in KG) of an article. The leading source for package size is MABAS."
+           matTooltip="Package Size is the defined weight (usually in KG) of an article."
            matTooltipPosition= "above">
         </i>
         <div style="border: 1px solid #dbe9f0; padding: 4px; padding-right: 12px; margin-top: 4px; margin-bottom: 8px;">
@@ -70,9 +70,10 @@
         <i id="DBPackageSize"
            class="fas fa-info-circle"
            #tooltip="matTooltip"
-           matTooltip="For some articles, e.g. bulk articles, a package size is not available in material master data. Nevertheless, some articles are usually sold in certain quantities. ADF can detect such quantites based on the historical data and it can be applied to forecast calculation if no (master data) package size is available. If you look at the historical time series, it is often very obvious that the order quantity was a multiple of a certain value (although no master data package size is available)."
-           matTooltipPosition= "above"></i>
-        <div style="border: 1px solid #dbe9f0; padding: 4px; padding-right: 12px; margin-top: 4px; margin-bottom: 8px;">
+           matTooltip="For some articles, e.g. bulk articles, a package size is not available in material master data. Nevertheless, some articles are usually sold in certain quantities. ADF can detect such quantites based on the historical data and it can be applied to forecast calculation if no (master data) package size is available."
+           matTooltipPosition= "above">
+           </i>
+           <div style="border: 1px solid #dbe9f0; padding: 4px; padding-right: 12px; margin-top: 4px; margin-bottom: 8px;">
           {{ DBPackageSize }}
         </div>
       </div>
@@ -97,7 +98,7 @@
         <i id="TSClass"
            class="fas fa-info-circle"
            #tooltip="matTooltip"
-           matTooltip="In general, article time series can differ in type and quality. There are time series with many zeros in its data history, time series with continuous demand and classical time series patterns such as trend and seasonality, time series with a short or long data history etc. ADF distinguishes between six main time series classes: ZeroObservations, OneObservation, Smooth, Erratic, Lumpy, Sporadic. You can see the historical time series in the article's plot or value table in the Article Forecast section and already from looking at it guess what class of time series it is. "
+           matTooltip="In general, article time series can differ in type and quality. There are time series with many zeros in its data history, time series with continuous demand and classical time series patterns such as trend and seasonality, time series with a short or long data history etc. ADF distinguishes between six main time series classes: ZeroObservations, OneObservation, Smooth, Erratic, Lumpy, Sporadic."
            matTooltipPosition= "above"></i>
         <div style="border: 1px solid #dbe9f0; padding: 4px; padding-right: 12px; margin-top: 4px; margin-bottom: 8px;">
           {{ TSClass }}
@@ -119,7 +120,7 @@
         <i id="AverageDemand"
            class="fas fa-info-circle"
            #tooltip="matTooltip"
-           matTooltip="Average Demand per month which is calculated based on the demand of the last 12 months. A recalculation and verification is possible by adding up the demand of the last 12 months and then dividing it by 12."
+           matTooltip="Average Demand per month which is calculated based on the demand of the last 12 months."
            matTooltipPosition= "above"></i>
         <div style="border: 1px solid #dbe9f0; padding: 4px; padding-right: 12px; margin-top: 4px; margin-bottom: 8px;">
           {{ AvgDemand }}
@@ -133,14 +134,14 @@
 
 
 
-  <div style="border-style: solid; border-width: 4px; border-color:#dbe9f0; border-radius: 2px; padding: 10px 20px; margin-top: 10px;">
+  <div id="FMBoxShortSub" style="border-style: solid; border-width: 4px; border-color:#dbe9f0; border-radius: 2px; padding: 10px 20px; margin-top: 10px;">
     Short-Term Forecast
     <hr>
     Forecast Method
     <i id="STFCMethod"
        class="fas fa-info-circle"
        #tooltip="matTooltip"
-           matTooltip="ADF is calculating forecasts for two years into the future: the first year is the short-term, the second the long-term forecast. For both, the best-fitting forecast method is automatically chosen. ADF is a complicated, highly automated forecasting system, so it will be difficult to test or recreate the forecast calculation by yourself. In the Forecast Methods subsection of the Article Forecast section you can see a ranking of the best-fitting forecast methods for the backtesting period. Selecting a method will plot the forecasts and show the method's accuracy and error. This will explain why a certain method has been chosen."
+           matTooltip="ADF is calculating forecasts for two years into the future: the first year is the short-term, the second the long-term forecast. For both, the best-fitting forecast method is automatically chosen."
            matTooltipPosition= "above"></i>
     <div style="border: 1px solid #dbe9f0; padding: 4px; margin-top: 4px; margin-bottom: 8px;">
       {{ STMethod }}
@@ -155,7 +156,7 @@
     <i id="STFCLevel"
        class="fas fa-info-circle"
        #tooltip="matTooltip"
-           matTooltip="ADF is calculating forecasts for two years into the future: the first year is the short-term, the second the long-term forecast. For both, the best-fitting method and best-fitting forecast level (only applicable if the Feedback Loop has been activated) are automatically chosen. ADF is a complicated, highly automated forecasting system, so it will be difficult to test or recreate the forecast calculation by yourself. If you have activated the Feedback Loop, you can check the article level and article customer level forecasts and their performance (forecast accuracy / error) for the backtesting period. This will explain why a certain level has been chosen."
+           matTooltip="ADF is calculating forecasts for two years into the future: the first year is the short-term, the second the long-term forecast. For both, the best-fitting method and best-fitting forecast level (only applicable if the Feedback Loop has been activated) are automatically chosen."
            matTooltipPosition= "above"></i>
     <div style="border: 1px solid #dbe9f0; padding: 4px; margin-top: 4px; margin-bottom: 8px;">
       {{ STLevel }}
@@ -171,14 +172,14 @@
 
 
 
-  <div style="border-style: solid; border-width: 4px; border-color:#dbe9f0; border-radius: 2px; padding: 10px 20px; margin-top: 10px;">
+  <div id="FMBoxLongSub" style="border-style: solid; border-width: 4px; border-color:#dbe9f0; border-radius: 2px; padding: 10px 20px; margin-top: 10px;">
     Long-Term Forecast
     <hr>
     Forecast Method
     <i id="LTFCMethod"
        class="fas fa-info-circle"
        #tooltip="matTooltip"
-           matTooltip="ADF is calculating forecasts for two years into the future: the first year is the short-term, the second the long-term forecast. For both, the best-fitting forecast method and level only applicable if the Feedback Loop has been activated) are automatically chosen."
+           matTooltip="ADF is calculating forecasts for two years into the future: the first year is the short-term, the second the long-term forecast. For both, the best-fitting forecast method and level (only applicable if the Feedback Loop has been activated) are automatically chosen."
            matTooltipPosition= "above"></i>
     <div style="border: 1px solid #dbe9f0; padding: 4px; margin-top: 4px; margin-bottom: 8px;">
       {{ LTMethod }}
@@ -193,7 +194,7 @@
     <i id="LTFCLevel"
        class="fas fa-info-circle"
        #tooltip="matTooltip"
-           matTooltip="ADF is calculating forecasts for two years into the future: the first year is the short-term, the second; the long-term forecast. For both, the best-fitting forecast method is automatically chosen. ADF is a complicated, highly automated forecasting system, so it will be difficult to test or recreate the forecast calculation by yourself. In the Forecast Methods subsection of the Article Forecast section you can see a ranking of the best-fitting forecast methods for the backtesting period. Selecting a method will plot the forecasts and show the method's accuracy and error. This will explain why a certain method has been chosen."
+           matTooltip="ADF is calculating forecasts for two years into the future: the first year is the short-term, the second; the long-term forecast. For both, the best-fitting forecast method is automatically chosen."
            matTooltipPosition= "above"></i>
     <div style="border: 1px solid #dbe9f0; padding: 4px; margin-top: 4px; margin-bottom: 8px;">
       {{ LTLevel }}

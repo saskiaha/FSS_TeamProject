@@ -55,6 +55,7 @@ main {
   height: 60px;
 }
 
+
 li a {
   display: block;
   color: #99D3ED;
@@ -62,18 +63,22 @@ li a {
   padding: 16px;
   text-decoration: none;
   font-size: 14px;
+  cursor: pointer;
 }
 
 li a:hover {
   color:#005981;
 }
 
+
+
 li .selected {
-  color:#005981;
+  color: #005981;
 }
 
-a:not([href]):not([class]) {
-  color: #99D3ED;
+.notClickable {
+  color: rgb(220, 220, 220) !important;
+  cursor: default !important;
 }
 
 #menuBarLine {
@@ -185,7 +190,7 @@ select:disabled {
   margin-left: 4px;
 }
 
-#mainInformation {
+.mainInformation {
   margin-top: 16px;
   margin-bottom: 16px;
 }
@@ -273,3 +278,4 @@ aside img {
   z-index: 101;
   font-size: 15px;
 }
+
