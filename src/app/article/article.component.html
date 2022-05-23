@@ -1,23 +1,17 @@
 <main>
-<div id="mainInformation">
-    <select name="BU-Article" id="BU-Article" style="width: min-content" disabled>
-        <option value="BU1"> {{ ArticleID }}</option>
-
-    </select>
+  <div id="mainInformation">
+    <div id="articleID">Z1245A01</div>
+    <div id="month">June 2021</div>
+    <div id="grArticle">GrArticle: {{ArticleID}}</div>
     <div id="articleText">{{ ArticleName }}</div>
-    <div id="filterbox">
-        June 2021 
-        <i class="fas fa-caret-right"></i>
-        <select name="filterArticle" id="filterArticle" disabled>
-            <option value="FA1">July 2021</option>
-            <option value="FA2">Filter Settings 2</option>
-            <option value="FA3">Filter Settings 3</option>
-            <option value="FA4">Filter Settings 4</option>
-        </select>
-    </div>
-</div>
+
+    <select id="filterbox" disabled>
+      <option>Article</option>
+    </select>
+  </div>
+  <br />
 <div id="mainGraphs">
-  <div id="container" style="width:100%; height:400px;"></div>
+  <div id="container" style="width:100%; height:390px;"></div>
 
 </div>
 </main>

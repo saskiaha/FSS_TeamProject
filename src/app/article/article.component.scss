@@ -94,13 +94,27 @@ a:not([href]):not([class]) {
 	font-weight: bolder;
 	color: gray;
   }
-  
-  #articleText {
-	display: inline-block;
-	margin-left: 20px;
-	font-weight: bolder;
-	color: gray;
-  }
+
+#articleID {
+  display: inline-block;
+  margin-left: 20px;
+  font-weight: bolder;
+  color: #005981 ;
+}
+
+#articleText {
+  display: inline-block; 
+  margin-left: 20px;
+  font-weight: lighter;
+  color: #005981;
+}
+
+#grArticle {
+  display: inline-block;
+  margin-left: 20px;
+  font-weight: bolder;
+  color: black;
+}
   
   #filterbox {
 	float: right;

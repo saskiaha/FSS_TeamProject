@@ -139,7 +139,7 @@ export class Article implements OnInit, AfterViewInit {
 
           const article = this.getArticle(this.task);
           this.ArticleName = article['INFO']['ARTICLETEXT'];
-          this.ArticleID = article['INFO']['GROUP_NAME'] + " - " + article['INFO']['ARTICLENAME'];
+          this.ArticleID = article['INFO']['ARTICLENAME'];
 
 
         });
@@ -253,7 +253,7 @@ export class Article implements OnInit, AfterViewInit {
         zoomType: 'x'
       },
       title: {
-        text: 'Forecast'
+        text: null
       },
       xAxis: {
         type: 'datetime',
