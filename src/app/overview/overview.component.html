@@ -27,8 +27,8 @@
     <hr id="menuBarLine">
 </div>
 <main id="main" style="width: 98%; display: inline-block;">
-    <app-article [articleNumber] = "art" id="Article" style="display: none;" #Article ></app-article>
-    <app-summary id="Summary" style="display: block;" #Summary></app-summary>
+    <app-article id="Article" style="display: none;" #article ></app-article>
+    <app-summary id="Summary" style="display: block;" #summary></app-summary>
 </main>
 <div id="chatIcon" (click)="showChat()" style="display: block; cursor: pointer"        #tooltip="matTooltip"
            matTooltip="Click here to open the the conversational assistant Planny"

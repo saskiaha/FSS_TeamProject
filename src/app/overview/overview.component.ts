@@ -114,7 +114,7 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
 
     this.currentTime = new Date()
 
-  
+
     this.directLine = window.WebChat.createDirectLine({
       secret: "HYu5FsTVYRQ.wTHsKFRVqkikwtfPkPycQSwinUKFioVZyspa5inuD_0",
       webSocket: false
@@ -157,7 +157,7 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
 
           //connect outgoing event handler and hand over reported data
           const event = new Event('webchatoutgoingactivity');
-          action.payload.activity.channelData = {Task: this.task, Treatment: this.treatment, UserID: this.userID, Level: this.status };
+          action.payload.activity.channelData = { Task: this.task, Treatment: this.treatment, UserID: this.userID, Level: this.status };
           var find = '([0-9]),([0-9])';
           var re = new RegExp(find, 'g');
           action.payload.activity.text = String(action.payload.activity.text).replace(re, '$1$2');
@@ -207,7 +207,7 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
 
     );
 
-    
+
     this.directLine
       .postActivity({
         from: { id: "USER_ID", name: "USER_NAME" },
@@ -219,7 +219,7 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
         },
         error => console.log(`Error posting activity ${error}`)
       );
-      
+
 
   }
 
@@ -245,10 +245,10 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
       clearInterval(this.refreshInterval);
     }
     this.refreshInterval = setInterval(() => {
-      if(this.timeLeft > 0){
+      if (this.timeLeft > 0) {
         this.timeLeft -= 1
       }
-      else{
+      else {
         this.dehighlight();
       }
 
@@ -279,26 +279,27 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
     this.noSpeechInteraction = false;
     if ((<any>event).data.type == 'event') {  //
       console.log(<any>event)
-      if((<any>event).data.name == 'SystemExp')
+      if ((<any>event).data.name == 'SystemExp') {
         this.highlight((<any>event).data.value)
       }
-      else if ((<any>event).data.type == 'message' && (<any>event).data.from.name != 'Conversational-ITL') {
-
-
-          if ((<any>event).data.channelData.speech != null) {
-            //console.log("speech");
-            //this.drillDownService.postSpeech(this.userID, this.task, this.treatment, 1, (<any>event).data.text, "State");
-          }
-          else {
-            //console.log("nospeech");
-            //this.drillDownService.postSpeech(this.userID, this.task, this.treatment, 0, (<any>event).data.text, "State");
-          }
-        
+      else if((<any>event).data.name == 'GoArticle'){
+        this.changeNav('Article Forecast')
       }
-      else if ((<any>event).data.type == 'message' && (<any>event).data.from.name == 'Conversational-ITL') {
-
+      else if((<any>event).data.name == 'GoSummary'){
+        this.changeNav('Summary')
+      }
+      else if((<any>event).data.name == 'ChangeButton'){
+        this.article.changeSubNav((<any>event).data.value)
       }
     }
+
+    else if ((<any>event).data.type == 'message' && (<any>event).data.from.name != 'Conversational-ITL') {
+
+    }
+    else if ((<any>event).data.type == 'message' && (<any>event).data.from.name == 'Conversational-ITL') {
+
+    }
+  }
 
   public messageHandler(event) {
 
@@ -345,8 +346,8 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
   }
 
 
-  changeNav(target){
-    if(target == "Summary"){
+  changeNav(target) {
+    if (target == "Summary") {
       document.getElementById("Summary").style.display = 'block';
       document.getElementById("Article").style.display = 'none';
 
@@ -354,7 +355,7 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
       document.getElementById("navArticleForecast").className = '';
       this.status = "Summary"
     }
-    else if(target == "Article Forecast"){
+    else if (target == "Article Forecast") {
       document.getElementById("Article").style.display = 'block';
       document.getElementById("Summary").style.display = 'none';
 
@@ -375,7 +376,7 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
     this.manualUsed = true;
   }
 
-  hideChat(){
+  hideChat() {
     document.getElementById("chatIcon").style.display = 'block';
     document.getElementById("webChat").style.display = 'none';
     document.getElementById("main").style.width = '98%';
@@ -386,7 +387,7 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
 
   }
 
-  showChat(){
+  showChat() {
     document.getElementById("webChat").style.display = 'block';
     document.getElementById("chatIcon").style.display = 'none';
     document.getElementById("main").style.width = '75%';
@@ -547,8 +548,8 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
         for (var r = 0, n = table.rows.length; r < n; r++) {
           table.rows[r].cells[12].classList.add("highlight");
         }
-          if (!document.getElementById("valuesInformation").classList.contains("selected")) {
-            document.getElementById("valuesInformation").classList.add("highlight");
+        if (!document.getElementById("valuesInformation").classList.contains("selected")) {
+          document.getElementById("valuesInformation").classList.add("highlight");
         }
         if (!document.getElementById("valuesMethods").classList.contains("selected")) {
           document.getElementById("valuesMethods").classList.add("highlight");
@@ -694,9 +695,9 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
         }
         if (!document.getElementById("valuesMethods").classList.contains("selected")) {
           document.getElementById("valuesMethods").classList.add("highlight");
-        } 
-          document.getElementById("BTsettingsBox").classList.add("highlightBox");
-        
+        }
+        document.getElementById("BTsettingsBox").classList.add("highlightBox");
+
         break;
 
       case "Performance Criterion":
@@ -705,8 +706,8 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
         }
         if (!document.getElementById("valuesMethods").classList.contains("selected")) {
           document.getElementById("valuesMethods").classList.add("highlight");
-        }         
-          document.getElementById("BTsettingsBox").children[2].classList.add("highlight");   
+        }
+        document.getElementById("BTsettingsBox").children[2].classList.add("highlight");
         break;
       case "PIS":
         if (this.status == "Summary") {
@@ -740,8 +741,8 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
         break;
 
       case "Manual":
-          document.getElementById("manual").classList.add("highlightBox");
-        
+        document.getElementById("manual").classList.add("highlightBox");
+
         break;
       case "Performance Criterion":
         if (this.status == "Summary") {
@@ -816,30 +817,30 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
 
     }, 1000);
 
-  
+
   }
 
-    dehighlight() {
+  dehighlight() {
 
-      var elems = document.querySelectorAll(".highlight");
+    var elems = document.querySelectorAll(".highlight");
 
-      [].forEach.call(elems, function (el) {
-        el.classList.remove("highlight");
-      });
+    [].forEach.call(elems, function (el) {
+      el.classList.remove("highlight");
+    });
 
-      var elems = document.querySelectorAll(".highlightPos");
+    var elems = document.querySelectorAll(".highlightPos");
 
-      [].forEach.call(elems, function (el) {
-        el.classList.remove("highlightPos");
-      });
+    [].forEach.call(elems, function (el) {
+      el.classList.remove("highlightPos");
+    });
 
-      var elems = document.querySelectorAll(".highlightBox");
+    var elems = document.querySelectorAll(".highlightBox");
 
-      [].forEach.call(elems, function (el) {
-        el.classList.remove("highlightBox");
-      });
+    [].forEach.call(elems, function (el) {
+      el.classList.remove("highlightBox");
+    });
 
-  }counth
+  } counth
 
   countHover(e) {
     var startTime = Date.now();
