@@ -282,13 +282,13 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
       if ((<any>event).data.name == 'SystemExp') {
         this.highlight((<any>event).data.value)
       }
-      else if((<any>event).data.name == 'GoArticle'){
+      else if ((<any>event).data.name == 'GoArticle') {
         this.changeNav('Article Forecast')
       }
-      else if((<any>event).data.name == 'GoSummary'){
+      else if ((<any>event).data.name == 'GoSummary') {
         this.changeNav('Summary')
       }
-      else if((<any>event).data.name == 'ChangeButton'){
+      else if ((<any>event).data.name == 'ChangeButton') {
         this.article.changeSubNav((<any>event).data.value)
       }
     }
@@ -398,24 +398,25 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
 
   highlight(term) {
     this.dehighlight();
-
+    console.log(term);
     this.timeLeft = 30
     switch (term) {
       case "GrArticle":
-        if (this.status == "Summary") {
           var table: HTMLTableElement = <HTMLTableElement>document.getElementById("summaryTable");
           for (var r = 0, n = table.rows.length; r < n; r++) {
             table.rows[r].cells[0].classList.add("highlight");
           }
-        }
+            document.getElementById("grArticle").classList.add("highlight");
         break;
       case "Locking Period":
-        if (this.status == "Summary") {
+        if (!(this.status == "Summary")) {
+          document.getElementById("navSummary").classList.add("highlight");
+        }
           var table: HTMLTableElement = <HTMLTableElement>document.getElementById("summaryTable");
           for (var r = 0, n = table.rows.length; r < n; r++) {
             table.rows[r].cells[1].classList.add("highlight");
           }
-        }
+        
         break;
       case "Article Text":
         if (this.status == "Summary") {
@@ -460,30 +461,36 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
       case "ZeroObservations":
       case "OneObservation":
       case "Sporadic":
-      case "Seasonal":
       case "TS Class":
-        if (this.status == "Summary") {
           var table: HTMLTableElement = <HTMLTableElement>document.getElementById("summaryTable");
           for (var r = 0, n = table.rows.length; r < n; r++) {
             table.rows[r].cells[7].classList.add("highlight");
           }
-        }
-        break;
-      case "Seasonality":
-        if (this.status == "Summary") {
-          var table: HTMLTableElement = <HTMLTableElement>document.getElementById("summaryTable");
-          for (var r = 0, n = table.rows.length; r < n; r++) {
-            table.rows[r].cells[8].classList.add("highlight");
+          if (!document.getElementById("valuesInformation").classList.contains("selected")) {
+            document.getElementById("valuesInformation").classList.add("highlight");
           }
+          document.getElementById("FMBoxWideSub").children[3].children[2].classList.add("highlightBox");
+        
+        break;
+      case "Seasonal":
+        var table: HTMLTableElement = <HTMLTableElement>document.getElementById("summaryTable");
+        for (var r = 0, n = table.rows.length; r < n; r++) {
+          table.rows[r].cells[8].classList.add("highlight");
         }
+        if (!document.getElementById("valuesInformation").classList.contains("selected")) {
+          document.getElementById("valuesInformation").classList.add("highlight");
+        }
+        document.getElementById("FMBoxWideSub").children[3].children[3].classList.add("highlightBox");
         break;
       case "ABC":
-        if (this.status == "Summary") {
+        if (!(this.status == "Summary")) {
+          document.getElementById("navSummary").classList.add("highlight");
+        }
           var table: HTMLTableElement = <HTMLTableElement>document.getElementById("summaryTable");
           for (var r = 0, n = table.rows.length; r < n; r++) {
             table.rows[r].cells[9].classList.add("highlight");
           }
-        }
+        
         break;
       case "STFC Level":
         var table: HTMLTableElement = <HTMLTableElement>document.getElementById("summaryTable");
@@ -506,9 +513,8 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
         }
         break;
       case "Blue line":
-      case "Green Line":
-      case "Black Line":
-
+      case "Green line":
+      case "Black line":
         if (this.status == "Summary") {
           document.getElementById("navArticleForecast").classList.add("highlightPos");
         }
@@ -531,6 +537,7 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
           document.getElementById("valuesInformation").classList.add("highlight");
         }
         document.getElementById("FMBoxLongSub").classList.add("highlightBox");
+        console.log("Long Term");
         break;
       case "Forecast Period":
       case "Dotted Line":
@@ -604,7 +611,14 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
         document.getElementById("methodTable").classList.add("highlight");
         break;
       case "Article Forecast":
-        document.getElementById("navArticleForecast").classList.add("highlightPos");
+        if (this.status == "Summary") {
+          document.getElementById("navArticleForecast").classList.add("highlightPos");
+        }
+        document.getElementById("Values").classList.add("highlight");
+        document.getElementById("container").classList.add("highlight");
+        if (!document.getElementById("valuesButton").classList.contains("selected")) {
+          document.getElementById("valuesButton").classList.add("highlight");
+        }
         break;
       case "Time Series":
         if (this.status == "Summary") {
@@ -682,14 +696,14 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
         }
         if (!document.getElementById("valuesMethods").classList.contains("selected")) {
           document.getElementById("valuesMethods").classList.add("highlight");
-        } else {
+        }
           document.getElementById("methodTableBox").classList.add("highlightBox");
           document.getElementById("BTsettingsBox").classList.add("highlightBox");
           document.getElementById("graphBox").classList.add("highlightBox");
-        }
+        
         break;
 
-      case "Backtest Results":
+      case "Backtest results":
         if (this.status == "Summary") {
           document.getElementById("navArticleForecast").classList.add("highlightPos");
         }
@@ -743,15 +757,6 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
       case "Manual":
         document.getElementById("manual").classList.add("highlightBox");
 
-        break;
-      case "Performance Criterion":
-        if (this.status == "Summary") {
-          document.getElementById("navArticleForecast").classList.add("highlightPos");
-        }
-        if (!document.getElementById("valuesMethods").classList.contains("selected")) {
-          document.getElementById("valuesMethods").classList.add("highlight");
-        }
-        document.getElementById("BTsettingsBox").children[1].classList.add("highlight");
         break;
 
       case "Summary Main Information":

@@ -147,7 +147,7 @@ export class Summary implements OnInit, AfterViewInit {
       var info = articles[i-1]['INFO'];
       var row = table.insertRow(1);
       row.id = info['ARTICLETEXT'];
-      if (this.task == i) {
+      if (this.task == 4-i) {
         row.addEventListener('click', (e) => this.selectArticle(e));
       }
 
