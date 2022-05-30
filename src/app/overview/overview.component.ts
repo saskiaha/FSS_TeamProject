@@ -112,8 +112,12 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
 
   async ngOnInit() {
 
-    this.currentTime = new Date()
+    this.currentTime = new Date();
+    this.postData(this.currentTime, 'Start', '');
+    if (this.treatment == 2) {
+      document.getElementById("chatIcon").style.display = 'none';
 
+    }
 
     this.directLine = window.WebChat.createDirectLine({
       secret: "HYu5FsTVYRQ.wTHsKFRVqkikwtfPkPycQSwinUKFioVZyspa5inuD_0",
@@ -142,10 +146,7 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
       }
     };
 */
-    //Get treatment
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    const art = urlParams.get('code');
+
 
 
     this.store = window.WebChat.createStore(
@@ -372,7 +373,12 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
   }
 
   openManual() {
-    window.open('assets/ADFUserManual.pdf', 'ADF User Manual');
+    if (this.treatment == 1) {
+      window.open('assets/ADFUserManual.pdf', 'ADF User Manual');
+    } else {
+      window.open('assets/ADFUserManual2.pdf', 'ADF User Manual');
+    }
+
     this.manualUsed = true;
   }
 
@@ -398,7 +404,6 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
 
   highlight(term) {
     this.dehighlight();
-    console.log(term);
     this.timeLeft = 30
     switch (term) {
       case "GrArticle":
@@ -537,7 +542,6 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
           document.getElementById("valuesInformation").classList.add("highlight");
         }
         document.getElementById("FMBoxLongSub").classList.add("highlightBox");
-        console.log("Long Term");
         break;
       case "Forecast Period":
       case "Dotted Line":
@@ -845,7 +849,7 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
       el.classList.remove("highlightBox");
     });
 
-  } counth
+  }
 
   countHover(e) {
     var startTime = Date.now();
@@ -861,6 +865,30 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
     }
   }
 
+  postData(time, type, params) {
+    var interactionData = {
+      userID: this.userID,
+      treatment: this.treatment,
+      task: this.task,
+      time: time,
+      type: type,
+      parameters: params
+    }
+
+
+    $.ajax({
+      type: 'POST',
+      url: 'https://www.feeasy.de/api/interaction',
+      data: interactionData,
+      dataType: 'json',
+      success: function (id) {
+
+      },
+      error: function (xhr, ajaxOptions, thrownError) {
+        alert(xhr.status);
+      }
+    });
+  }
 
 }
 

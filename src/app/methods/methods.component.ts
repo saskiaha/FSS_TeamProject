@@ -489,6 +489,7 @@ export class Methods implements OnInit, AfterViewInit {
       mainChart.addSeries({
         data: selectedMethodData,
         name: selectedMethod,
+        color: "#D9534F"
 
       })
 
