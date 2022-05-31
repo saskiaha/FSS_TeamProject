@@ -186,7 +186,6 @@ getArticle(num) {
   } else if (num == 3) {
     data = require("assets/Article3.json");
   }
-  console.log(data);
   return data;
 }
 

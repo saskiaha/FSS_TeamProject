@@ -167,7 +167,6 @@ export class Summary implements OnInit, AfterViewInit {
 
       cellGrArticle.innerHTML = JSON.stringify(info['OBJECTNAME']).slice(14, -2);
       var artKey = JSON.stringify(info['ARTKEY']).split('_^!^_', 2);
-      console.log(artKey);
       cellLockingP.innerHTML = artKey[1];
       cellArticletext.innerHTML = info['ARTICLETEXT'];
       cellSBU.innerHTML = info['SBU'];
@@ -192,6 +191,7 @@ export class Summary implements OnInit, AfterViewInit {
 
     document.getElementById("navSummary").className = '';
     document.getElementById("navArticleForecast").className = 'selected';
+    this.drillDownService.postData('Select Article', '');
 
   }
 

@@ -91,8 +91,6 @@ export class Article implements OnInit, AfterViewInit {
     private http: HttpClient
   ) {
 
-
-
     this.location = location;
     this.hostElement = this.elRef.nativeElement;
 
@@ -179,7 +177,6 @@ export class Article implements OnInit, AfterViewInit {
     } else if (num == 3) {
       data = require("assets/Article3.json");
     }
-    console.log(data);
     return data;
   }
 
@@ -233,8 +230,6 @@ export class Article implements OnInit, AfterViewInit {
       openOrdersSplit[i] = [openOrders[i][0].split("-", 3), openOrders[i][1]];
       openOrdersSplit[i] = [Date.UTC(openOrdersSplit[i][0][0], (openOrdersSplit[i][0][1] - 1), openOrdersSplit[i][0][2]), openOrdersSplit[i][1]];
     }
-
-    console.log(openOrdersSplit);
 
     for (var i = 0; i < fcSplit.length; i++) {
       openOrdersFinal[i] = [fcSplit[i][0], 0];
@@ -317,6 +312,7 @@ export class Article implements OnInit, AfterViewInit {
 
 
   changeSubNav(target) {
+    this.drillDownService.postData('Submenu Change', JSON.stringify({ target }));
     if (target == "Values") {
       document.getElementById("Values").style.display = 'block';
       document.getElementById("Information").style.display = 'none';

@@ -9,6 +9,7 @@ import { DrillDownService } from "../shared/drilldown.services";
 import { FunctionService } from "../shared/function.services";
 import { SimpleService } from "../shared/simple.services";
 import { CheckUpService } from '../shared/checkup.services';
+import { HttpClient } from '@angular/common/http';
 
 import {
   formatDate
@@ -77,7 +78,8 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
     private drillDownService: DrillDownService,
     private functionService: FunctionService,
     private simpleService: SimpleService,
-    private checkUpService: CheckUpService
+    private checkUpService: CheckUpService,
+    private http: HttpClient
   ) {
 
     this._routerSub = router.events.pipe(
@@ -112,8 +114,7 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
 
   async ngOnInit() {
 
-    this.currentTime = new Date();
-    this.postData(this.currentTime, 'Start', '');
+    this.drillDownService.postData('Start', '');
     if (this.treatment == 2) {
       document.getElementById("chatIcon").style.display = 'none';
 
@@ -235,6 +236,7 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
     window.removeEventListener('webchatincomingactivity', this.webChatHandler.bind(this));
     window.removeEventListener("message", this.messageHandler.bind(this), false);
     this.store = null;
+    this.drillDownService.postData('End', '');
   }
 
   initialize() {
@@ -264,7 +266,7 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
 
     var tooltips = document.getElementsByClassName('fas fa-info-circle');
     for (var i = 0; i < tooltips.length; i++) {
-      tooltips[i].addEventListener('mouseover', (e) => this.countHover(e));
+      tooltips[i].addEventListener('mouseover', (e) => this.countHover(e, this));
     }
   }
 
@@ -279,7 +281,7 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
     document.querySelectorAll("[class$=webchat__basic-transcript__scrollable]")[0].scrollTo({ left: 0, top: sheight, behavior: 'auto' });
     this.noSpeechInteraction = false;
     if ((<any>event).data.type == 'event') {  //
-      console.log(<any>event)
+      //console.log(<any>event)
       if ((<any>event).data.name == 'SystemExp') {
         this.highlight((<any>event).data.value)
       }
@@ -293,11 +295,15 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
         this.article.changeSubNav((<any>event).data.value)
       }
     }
-
-    else if ((<any>event).data.type == 'message' && (<any>event).data.from.name != 'Conversational-ITL') {
+    
+    else if ((<any>event).data.type == 'message' && (<any>event).data.from.name != 'Planny') {
+      var userText = (<any>event).data.text;
+      this.drillDownService.postData('User Message', JSON.stringify({userText}));
 
     }
-    else if ((<any>event).data.type == 'message' && (<any>event).data.from.name == 'Conversational-ITL') {
+    else if ((<any>event).data.type == 'message' && (<any>event).data.from.name == 'Planny') {
+      var userText = (<any>event).data.text;
+      this.drillDownService.postData('Bot Message', JSON.stringify({ userText }));
 
     }
   }
@@ -348,6 +354,7 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
 
 
   changeNav(target) {
+    this.drillDownService.postData('Menu Change', JSON.stringify({ target }));
     if (target == "Summary") {
       document.getElementById("Summary").style.display = 'block';
       document.getElementById("Article").style.display = 'none';
@@ -379,7 +386,7 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
       window.open('assets/ADFUserManual2.pdf', 'ADF User Manual');
     }
 
-    this.manualUsed = true;
+    this.drillDownService.postData('Open Manual', '');
   }
 
   hideChat() {
@@ -390,6 +397,7 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
       Highcharts.charts[i].reflow();
     }
     this.dehighlight();
+    this.drillDownService.postData('Close Chat', '');
 
   }
 
@@ -400,6 +408,7 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
     for (var i = 0; i < Highcharts.charts.length; i++) {
       Highcharts.charts[i].reflow();
     }
+    this.drillDownService.postData('Open Chat', '');
   }
 
   highlight(term) {
@@ -851,7 +860,7 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
 
   }
 
-  countHover(e) {
+  countHover(e, that) {
     var startTime = Date.now();
     var id = e['target'].id;
     var element = document.getElementById(id);
@@ -860,34 +869,11 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
       var endTime = Date.now();
       var duration = endTime - startTime;
       if (duration > 1000) {
-        console.log(id + ": " + duration);
       }
+
+      var params = { id, duration };
+      that.drillDownService.postData("Tooltip", JSON.stringify(params));
     }
-  }
-
-  postData(time, type, params) {
-    var interactionData = {
-      userID: this.userID,
-      treatment: this.treatment,
-      task: this.task,
-      time: time,
-      type: type,
-      parameters: params
-    }
-
-
-    $.ajax({
-      type: 'POST',
-      url: 'https://www.feeasy.de/api/interaction',
-      data: interactionData,
-      dataType: 'json',
-      success: function (id) {
-
-      },
-      error: function (xhr, ajaxOptions, thrownError) {
-        alert(xhr.status);
-      }
-    });
   }
 
 }

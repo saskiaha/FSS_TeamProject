@@ -465,6 +465,7 @@ export class Methods implements OnInit, AfterViewInit {
   }
 
   selectMethod(id) {
+
     var methods = this.createOtherFCs();
     var selectedMethod = id['path'][1].id;
     var selectedMethodData = [];
@@ -477,7 +478,7 @@ export class Methods implements OnInit, AfterViewInit {
 
 
     if (!this.selected.includes(selectedMethod)) {
-
+      this.drillDownService.postData('Select Method', JSON.stringify({ selectedMethod }));
       this.selected.push(selectedMethod);
 
       for (var i = 0; i < methods.length; i++) {
@@ -502,13 +503,9 @@ export class Methods implements OnInit, AfterViewInit {
         } 
       }
       row.forEach(element => element.style.backgroundColor = color);
-
-
-
-
-
       mainChart.reflow();
     } else {
+      this.drillDownService.postData('Deselect Method', JSON.stringify({ selectedMethod }));
       const row = Array.from(document.getElementsByClassName(selectedMethod) as HTMLCollectionOf<HTMLElement>);
 
       for (i = 0; i < row.length; i++) {
@@ -525,10 +522,7 @@ export class Methods implements OnInit, AfterViewInit {
       }
       var index = this.selected.indexOf(selectedMethod, 0);
       if (index !== -1) {
-        console.log(this.selected);
-        console.log(index);
-        console.log(this.selected[index]);
-        console.log(selectedMethod);
+
         this.selected.splice(index, 1);
       }
 
@@ -545,7 +539,7 @@ getArticle(num) {
   } else if (num == 3) {
     data = require("assets/Article3.json");
   }
-  console.log(data);
+
   return data;
 }
 }
