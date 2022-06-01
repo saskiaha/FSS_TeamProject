@@ -635,7 +635,7 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
         break;
       case "Time Series":
         if (this.status == "Summary") {
-          document.getElementById("navArticleForecast").classList.add("highlightPos");
+          document.getElementById("navArticleForecast").classList.add("highlightBox");
         }
         document.getElementById("container").classList.add("highlight");
         document.getElementById("Values").classList.add("highlight");
@@ -645,7 +645,7 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
         break;
       case "Package Size":
         if (this.status == "Summary") {
-          document.getElementById("navArticleForecast").classList.add("highlightPos");
+          document.getElementById("navArticleForecast").classList.add("highlightBox");
         }
         if (!document.getElementById("valuesInformation").classList.contains("selected")) {
           document.getElementById("valuesInformation").classList.add("highlight");
@@ -654,7 +654,7 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
         break;
       case "Data-based Package Size":
         if (this.status == "Summary") {
-          document.getElementById("navArticleForecast").classList.add("highlightPos");
+          document.getElementById("navArticleForecast").classList.add("highlightBox");
         }
         if (!document.getElementById("valuesInformation").classList.contains("selected")) {
           document.getElementById("valuesInformation").classList.add("highlight");
@@ -663,7 +663,7 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
         break;
       case "Aggregation Level":
         if (this.status == "Summary") {
-          document.getElementById("navArticleForecast").classList.add("highlightPos");
+          document.getElementById("navArticleForecast").classList.add("highlightBox");
         }
         if (!document.getElementById("valuesInformation").classList.contains("selected")) {
           document.getElementById("valuesInformation").classList.add("highlight");
@@ -674,7 +674,7 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
 
       case "Article ID":
         if (this.status == "Summary") {
-          document.getElementById("navArticleForecast").classList.add("highlightPos");
+          document.getElementById("navArticleForecast").classList.add("highlightBox");
         }
         if (!document.getElementById("valuesInformation").classList.contains("selected")) {
           document.getElementById("valuesInformation").classList.add("highlight");
@@ -684,7 +684,7 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
         break;
       case "Historical Data":
         if (this.status == "Summary") {
-          document.getElementById("navArticleForecast").classList.add("highlightPos");
+          document.getElementById("navArticleForecast").classList.add("highlightBox");
 
         }
         if (!document.getElementById("valuesButton").classList.contains("selected")) {
@@ -695,7 +695,7 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
 
       case "Nonzero":
         if (this.status == "Summary") {
-          document.getElementById("navArticleForecast").classList.add("highlightPos");
+          document.getElementById("navArticleForecast").classList.add("highlightBox");
         }
         if (!document.getElementById("valuesInformation").classList.contains("selected")) {
           document.getElementById("valuesInformation").classList.add("highlight");
@@ -705,7 +705,7 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
 
       case "Backtesting":
         if (this.status == "Summary") {
-          document.getElementById("navArticleForecast").classList.add("highlightPos");
+          document.getElementById("navArticleForecast").classList.add("highlightBox");
         }
         if (!document.getElementById("valuesMethods").classList.contains("selected")) {
           document.getElementById("valuesMethods").classList.add("highlight");
@@ -718,7 +718,7 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
 
       case "Backtest results":
         if (this.status == "Summary") {
-          document.getElementById("navArticleForecast").classList.add("highlightPos");
+          document.getElementById("navArticleForecast").classList.add("highlightBox");
         }
         if (!document.getElementById("valuesMethods").classList.contains("selected")) {
           document.getElementById("valuesMethods").classList.add("highlight");
@@ -729,7 +729,7 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
 
       case "Performance Criterion":
         if (this.status == "Summary") {
-          document.getElementById("navArticleForecast").classList.add("highlightPos");
+          document.getElementById("navArticleForecast").classList.add("highlightBox");
         }
         if (!document.getElementById("valuesMethods").classList.contains("selected")) {
           document.getElementById("valuesMethods").classList.add("highlight");
@@ -738,7 +738,7 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
         break;
       case "PIS":
         if (this.status == "Summary") {
-          document.getElementById("navArticleForecast").classList.add("highlightPos");
+          document.getElementById("navArticleForecast").classList.add("highlightBox");
         }
         if (!document.getElementById("valuesMethods").classList.contains("selected")) {
           document.getElementById("valuesMethods").classList.add("highlight");
@@ -749,7 +749,7 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
 
       case "Forecast Accuracy":
         if (this.status == "Summary") {
-          document.getElementById("navArticleForecast").classList.add("highlightPos");
+          document.getElementById("navArticleForecast").classList.add("highlightBox");
         }
         if (!document.getElementById("valuesMethods").classList.contains("selected")) {
           document.getElementById("valuesMethods").classList.add("highlight");
@@ -759,7 +759,7 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
 
       case "Forecast Errors":
         if (this.status == "Summary") {
-          document.getElementById("navArticleForecast").classList.add("highlightPos");
+          document.getElementById("navArticleForecast").classList.add("highlightBox");
         }
         if (!document.getElementById("valuesMethods").classList.contains("selected")) {
           document.getElementById("valuesMethods").classList.add("highlight");
