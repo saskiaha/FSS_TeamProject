@@ -625,7 +625,7 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
         break;
       case "Article Forecast":
         if (this.status == "Summary") {
-          document.getElementById("navArticleForecast").classList.add("highlightPos");
+          document.getElementById("navArticleForecast").classList.add("highlightBox");
         }
         document.getElementById("Values").classList.add("highlight");
         document.getElementById("container").classList.add("highlight");

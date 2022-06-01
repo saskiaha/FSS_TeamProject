@@ -151,7 +151,7 @@ export class Information implements OnInit, AfterViewInit {
           this.HistoricalData = info['LENGTH'];
           this.NonZero = info['PNZ'];
           this.TSClass = info['TSCLASS'];
-          this.Seasonal = 'No';
+          this.Seasonal = info['SEASONAL'];
           this.AvgDemand = info['AVSALES'];
           this.STMethod = info['STFCMETHOD'];
           this.STPeriod = info['STHORIZON'] + ' months';
