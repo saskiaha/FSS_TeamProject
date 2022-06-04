@@ -89,6 +89,7 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
 
         if (this.route.snapshot.params['userID']) {
           this.userID = this.route.snapshot.params['userID'];
+
         }
         else {
           this.userID = "0000000";
@@ -96,6 +97,7 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
 
         if (this.route.snapshot.params['treatment']) {
           this.treatment = this.route.snapshot.params['treatment'];
+
         }
         else {
           this.treatment = "0";
@@ -103,10 +105,14 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
 
         if (this.route.snapshot.params['task']) {
           this.task = this.route.snapshot.params['task'];
+
         }
         else {
           this.task = "0";
         }
+        this.drillDownService.userID = this.userID;
+        this.drillDownService.treatment = this.treatment;
+        this.drillDownService.task = this.task;
       });
     });
 
@@ -869,10 +875,11 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
       var endTime = Date.now();
       var duration = endTime - startTime;
       if (duration > 1000) {
+        var params = { id, duration };
+        that.drillDownService.postData("Tooltip", JSON.stringify(params));
       }
+      
 
-      var params = { id, duration };
-      that.drillDownService.postData("Tooltip", JSON.stringify(params));
     }
   }
 

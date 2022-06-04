@@ -39,7 +39,7 @@
             <th>GrArticle</th>
             <th>
               Locking Period
-              <i id="LockingPeriod"
+              <i id="SLockingPeriod"
                 class="fas fa-info-circle"
                 #tooltip="matTooltip"
                 matTooltip="The locking period refers to months in the future that are locked against changes to forecast data. It is useful in cases of long transportation times or purpose-built items, where planning needs to happen ahead of time. The locking period takes effect in the ADF forecast calculation. The locking period is considered as explicit part of your planning and forecast level."
@@ -51,20 +51,20 @@
             <th>Alphacode</th>
             <th>
               Segmentation
-              <i id="Segmentation"
+              <i id="SSegmentation"
                  class="fas fa-info-circle"
                  #tooltip="matTooltip"
                  matTooltip="ADF's segmentation is two-dimensional: it considers sales volume and forecast accuracy. Based on an ABC analysis, A/B articles (95% of cumulative sales volume) are moved to the focus area. By comparing the forecast accuracy of the statistical and the regional marketing forecast, articles are segmented as High-Touch (HT) or Low-Touch (LT). C articles are moved to the non-focus area and segmented as No-Touch (NT) or Random (RD)."
                  matTooltipPosition="above"></i>
             </th>
             <th>TS Class
-              <i id="TSClass"
+              <i id="STSClass"
                  class="fas fa-info-circle"
                  #tooltip="matTooltip"
                  matTooltip="In general, article time series can differ in type and quality. There are time series with many zeros in its data history, time series with continuous demand and classical time series patterns such as trend and seasonality, time series with a short or long data history etc. ADF distinguishes between six main time series classes: ZeroObservations, OneObservation, Smooth, Erratic, Lumpy, Sporadic."
                  matTooltipPosition="above"></i></th>
             <th>Seasonal
-              <i id="Seasonality"
+              <i id="SSeasonality"
                  class="fas fa-info-circle"
                  #tooltip="matTooltip"
                  matTooltip="Seasonality is a repeating pattern within a year, e.g. peaks in the summer, drops in the winter or a peak in every first month of a quarter. You can see the historical time series in the article's plot or value table in the Article Forecast section. Seasonality does not have to be based on the actual seasons, but can be any repeating pattern within a year."
@@ -72,13 +72,13 @@
             <th>ABC</th>
             <th>Warning</th>
             <th>STFC Level
-              <i id="STFCLevel"
+              <i id="SSTFCLevel"
                  class="fas fa-info-circle"
                  #tooltip="matTooltip"
                  matTooltip="ADF is calculating forecasts for two years into the future: the first year is the short-term, the second the long-term forecast. For both, the best-fitting method and best-fitting forecast level (only applicable if the Feedback Loop has been activated) are automatically chosen."
                  matTooltipPosition="above"></i></th>
             <th>STFC Method
-              <i id="LTFCMethod"
+              <i id="SLTFCMethod"
                  class="fas fa-info-circle"
                  #tooltip="matTooltip"
                  matTooltip="ADF is calculating forecasts for two years into the future: the first year is the short-term, the second the long-term forecast. For both, the best-fitting forecast method and level (only applicable if the Feedback Loop has been activated) are automatically chosen."

@@ -44,27 +44,6 @@ export class DrillDownService {
       filter(event => event instanceof NavigationEnd)
     ).subscribe((event: NavigationEnd) => {
       this.route.params.subscribe(params => {
-
-        if (this.route.snapshot.params['userID']) {
-          this.userID = this.route.snapshot.params['userID'];
-        }
-        else {
-          this.userID = "0000000";
-        }
-
-        if (this.route.snapshot.params['treatment']) {
-          this.treatment = this.route.snapshot.params['treatment'];
-        }
-        else {
-          this.treatment = "0";
-        }
-
-        if (this.route.snapshot.params['task']) {
-          this.task = this.route.snapshot.params['task'];
-        }
-        else {
-          this.task = "0";
-        }
       });
     });
   }
