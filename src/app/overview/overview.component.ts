@@ -124,6 +124,9 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
     if (this.treatment == 2) {
       document.getElementById("chatIcon").style.display = 'none';
 
+    } else {
+
+      this.showChat();
     }
 
     this.directLine = window.WebChat.createDirectLine({
