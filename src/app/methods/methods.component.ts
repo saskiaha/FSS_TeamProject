@@ -180,9 +180,13 @@ export class Methods implements OnInit, AfterViewInit {
 
     for (var i = 0; i < pp.length; i++) {
       if (pp[i]['METHOD'] == selectedMethod && pp[i]['FCSTEP'] == fcStep) {
+        console.log(pp[i]['DATE']);
         month = pp[i]['DATE'].split("-", 3);
-        month = [Date.UTC(month[0], month[1], month[2])];
+        console.log(month);
+        month = [Date.UTC(month[0], month[1]-1, month[2])];
+        console.log(month);
         feData.push([month[0], pp[i]['ERROR']]);
+
       }
     }
     var newSeries = [{
@@ -437,7 +441,7 @@ export class Methods implements OnInit, AfterViewInit {
 
       plotOptions: {
         series: {
-          pointStart: Date.UTC(2020, 6, 1),
+          pointStart: Date.UTC(2020, 5, 1),
           pointIntervalUnit: 'month'
         }
 
