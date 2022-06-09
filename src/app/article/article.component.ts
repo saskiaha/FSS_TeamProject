@@ -214,7 +214,7 @@ export class Article implements OnInit, AfterViewInit {
 
     for (var i = 0; actualSplit.length + i < data.length; i++) {
 
-      fc[i] = [data[actualSplit.length + i]['DATE'], data[actualSplit.length + i]['FORECAST']];
+      fc[i] = [data[actualSplit.length + i]['DATE'], Math.trunc(data[actualSplit.length + i]['FORECAST'])];
 
       //Bring date in correct format
       fcSplit[i] = [fc[i][0].split("-", 3), fc[i][1]];
@@ -226,7 +226,7 @@ export class Article implements OnInit, AfterViewInit {
 
 
     for (var i = 0; i < ooData.length; i++) {
-      openOrders[i] = [ooData[i]['DATE'], ooData[i]['VALUE']];
+      openOrders[i] = [ooData[i]['DATE'], Math.trunc(ooData[i]['VALUE'])];
       openOrdersSplit[i] = [openOrders[i][0].split("-", 3), openOrders[i][1]];
       openOrdersSplit[i] = [Date.UTC(openOrdersSplit[i][0][0], (openOrdersSplit[i][0][1] - 1), openOrdersSplit[i][0][2]), openOrdersSplit[i][1]];
     }

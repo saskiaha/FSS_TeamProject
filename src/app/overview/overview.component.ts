@@ -204,7 +204,8 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
           sendBoxHeight: 40,
           bubbleMinHeight: 0,
           bubbleMaxWidth: 450,
-          paddingRegular: 5
+          paddingRegular: 5,
+          suggestedActionLayout: 'stacked'
         },
         //webSpeechPonyfillFactory: await createHybridPonyfillFactory(),
         locale: 'en-US',
