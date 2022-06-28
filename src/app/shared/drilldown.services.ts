@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { param } from 'jquery';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
@@ -114,10 +114,8 @@ export class DrillDownService {
     }
 
 
-    this.http.post<any>('http://interactive-analytics.org:8080/plannyLog', interactionData).subscribe({
-      next: data => {
-        console.log(data);
-      },
+
+    this.http.post<any>('https://interactive-analytics.org:3003/plannyLog', interactionData).subscribe({
       error: error => {
         console.log(error.message);
         console.error('There was an error!', error);
