@@ -10,7 +10,7 @@
         <i id="AggregationLevel"
            class="fas fa-info-circle"
            #tooltip="matTooltip"
-           matTooltip="ADF is calculating forecasts on a specified Aggregation Level which can be configured for every business unit/region. A best-fitting method is selected and a forecast created for each combination of characteristics of the Aggregation Level, e.g. one forecast per GrArticle and customer combination or one forecast per GrArticle and country combination.If you have activated the Feedback Loop ADF will automatically calculate forecasts on both article and article customer level and automatically decide which level performed better. The forecasts will then either be aggregated or disaggregated to match your general settings. "
+           matTooltip="Inspector Tool is calculating forecasts on a specified Aggregation Level which can be configured for every business unit/region. A best-fitting method is selected and a forecast created for each combination of characteristics of the Aggregation Level, e.g. one forecast per GrArticle and customer combination or one forecast per GrArticle and country combination.If you have activated the Feedback Loop Inspector Tool will automatically calculate forecasts on both article and article customer level and automatically decide which level performed better. The forecasts will then either be aggregated or disaggregated to match your general settings. "
            matTooltipPosition= "above"></i>
         <div style="border: 1px solid #dbe9f0; padding: 4px; padding-right: 12px; margin-top: 4px; margin-bottom: 8px;"  matTooltip="Info about the action">
           {{ AggregationLevel }}
@@ -47,7 +47,7 @@
         <i id="Segmentation"
            class="fas fa-info-circle"
            #tooltip="matTooltip"
-           matTooltip="ADF's segmentation is two-dimensional: it considers sales volume and forecast accuracy. Based on an ABC analysis, A/B articles (95% of cumulative sales volume) are moved to the focus area. By comparing the forecast accuracy of the statistical and the regional marketing forecast, articles are segmented as High-Touch (HT) or Low-Touch (LT). C articles are moved to the non-focus area and segmented as No-Touch (NT) or Random (RD)."
+           matTooltip="Inspector Tool's segmentation is two-dimensional: it considers sales volume and forecast accuracy. Based on an ABC analysis, A/B articles (95% of cumulative sales volume) are moved to the focus area. By comparing the forecast accuracy of the statistical and the regional marketing forecast, articles are segmented as High-Touch (HT) or Low-Touch (LT). C articles are moved to the non-focus area and segmented as No-Touch (NT) or Random (RD)."
            matTooltipPosition= "above"></i>
         <div style="border: 1px solid #dbe9f0; padding: 4px; padding-right: 12px; margin-top: 4px; margin-bottom: 8px;">
           {{ Segmentation }}
@@ -70,7 +70,7 @@
         <i id="DBPackageSize"
            class="fas fa-info-circle"
            #tooltip="matTooltip"
-           matTooltip="For some articles, e.g. bulk articles, a package size is not available in material master data. Nevertheless, some articles are usually sold in certain quantities. ADF can detect such quantites based on the historical data and it can be applied to forecast calculation if no (master data) package size is available."
+           matTooltip="For some articles, e.g. bulk articles, a package size is not available in material master data. Nevertheless, some articles are usually sold in certain quantities. Inspector Tool can detect such quantites based on the historical data and it can be applied to forecast calculation if no (master data) package size is available."
            matTooltipPosition= "above">
            </i>
            <div style="border: 1px solid #dbe9f0; padding: 4px; padding-right: 12px; margin-top: 4px; margin-bottom: 8px;">
@@ -98,7 +98,7 @@
         <i id="TSClass"
            class="fas fa-info-circle"
            #tooltip="matTooltip"
-           matTooltip="In general, article time series can differ in type and quality. There are time series with many zeros in its data history, time series with continuous demand and classical time series patterns such as trend and seasonality, time series with a short or long data history etc. ADF distinguishes between six main time series classes: ZeroObservations, OneObservation, Smooth, Erratic, Lumpy, Sporadic."
+           matTooltip="In general, article time series can differ in type and quality. There are time series with many zeros in its data history, time series with continuous demand and classical time series patterns such as trend and seasonality, time series with a short or long data history etc. Inspector Tool distinguishes between six main time series classes: ZeroObservations, OneObservation, Smooth, Erratic, Lumpy, Sporadic."
            matTooltipPosition= "above"></i>
         <div style="border: 1px solid #dbe9f0; padding: 4px; padding-right: 12px; margin-top: 4px; margin-bottom: 8px;">
           {{ TSClass }}
@@ -141,7 +141,7 @@
     <i id="STFCMethod"
        class="fas fa-info-circle"
        #tooltip="matTooltip"
-           matTooltip="ADF is calculating forecasts for two years into the future: the first year is the short-term, the second the long-term forecast. For both, the best-fitting forecast method is automatically chosen."
+           matTooltip="Inspector Tool is calculating forecasts for two years into the future: the first year is the short-term, the second the long-term forecast. For both, the best-fitting forecast method is automatically chosen."
            matTooltipPosition= "above"></i>
     <div style="border: 1px solid #dbe9f0; padding: 4px; margin-top: 4px; margin-bottom: 8px;">
       {{ STMethod }}
@@ -156,7 +156,7 @@
     <i id="STFCLevel"
        class="fas fa-info-circle"
        #tooltip="matTooltip"
-           matTooltip="ADF is calculating forecasts for two years into the future: the first year is the short-term, the second the long-term forecast. For both, the best-fitting method and best-fitting forecast level (only applicable if the Feedback Loop has been activated) are automatically chosen."
+           matTooltip="Inspector Tool is calculating forecasts for two years into the future: the first year is the short-term, the second the long-term forecast. For both, the best-fitting method and best-fitting forecast level (only applicable if the Feedback Loop has been activated) are automatically chosen."
            matTooltipPosition= "above"></i>
     <div style="border: 1px solid #dbe9f0; padding: 4px; margin-top: 4px; margin-bottom: 8px;">
       {{ STLevel }}
@@ -179,7 +179,7 @@
     <i id="LTFCMethod"
        class="fas fa-info-circle"
        #tooltip="matTooltip"
-           matTooltip="ADF is calculating forecasts for two years into the future: the first year is the short-term, the second the long-term forecast. For both, the best-fitting forecast method and level (only applicable if the Feedback Loop has been activated) are automatically chosen."
+           matTooltip="Inspector Tool is calculating forecasts for two years into the future: the first year is the short-term, the second the long-term forecast. For both, the best-fitting forecast method and level (only applicable if the Feedback Loop has been activated) are automatically chosen."
            matTooltipPosition= "above"></i>
     <div style="border: 1px solid #dbe9f0; padding: 4px; margin-top: 4px; margin-bottom: 8px;">
       {{ LTMethod }}
@@ -194,7 +194,7 @@
     <i id="LTFCLevel"
        class="fas fa-info-circle"
        #tooltip="matTooltip"
-           matTooltip="ADF is calculating forecasts for two years into the future: the first year is the short-term, the second; the long-term forecast. For both, the best-fitting forecast method is automatically chosen."
+           matTooltip="Inspector Tool is calculating forecasts for two years into the future: the first year is the short-term, the second; the long-term forecast. For both, the best-fitting forecast method is automatically chosen."
            matTooltipPosition= "above"></i>
     <div style="border: 1px solid #dbe9f0; padding: 4px; margin-top: 4px; margin-bottom: 8px;">
       {{ LTLevel }}

@@ -198,9 +198,9 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
           bubbleBackground: '#e6e2e27a',
           bubbleFromUserBorderWidth: 0,
           bubbleFromUserBorderColor: 'black',
-          sendBoxButtonColor: 'rgba(255,153, 0, 1)',
-          sendBoxButtonColorOnFocus: 'rgba(255,153, 0, 1)',
-          sendBoxButtonColorOnHover: 'rgba(255,153, 0, 1)',
+          sendBoxButtonColor: 'rgb(54, 110, 183)',
+          sendBoxButtonColorOnFocus: 'rgb(54, 110, 183)',
+          sendBoxButtonColorOnHover: 'rgb(54, 110, 183)',
           sendBoxHeight: 40,
           bubbleMinHeight: 0,
           bubbleMaxWidth: 450,
@@ -391,9 +391,9 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
 
   openManual() {
     if (this.treatment == 1) {
-      window.open('assets/ADFUserManual.pdf', 'ADF User Manual');
+      window.open('assets/FSS-IT_User_Manual.pdf', 'Inspector Tool User Manual');
     } else {
-      window.open('assets/ADFUserManual2.pdf', 'ADF User Manual');
+      window.open('assets/FSS-IT_User_Manual.pdf', 'Inspector Tool User Manual');
     }
 
     this.drillDownService.postData('Open Manual', '');

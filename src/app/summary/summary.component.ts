@@ -152,26 +152,26 @@ export class Summary implements OnInit, AfterViewInit {
       }
 
       var cellGrArticle = row.insertCell(0);
-      var cellLockingP = row.insertCell(1);
-      var cellArticletext = row.insertCell(2);
-      var cellSBU = row.insertCell(3);
-      var cellCountry = row.insertCell(4);
-      var cellAlphacode = row.insertCell(5);
-      var cellSegmentation = row.insertCell(6);
-      var cellTSClass = row.insertCell(7);
-      var cellSeasonal = row.insertCell(8);
-      var cellABC = row.insertCell(9);
-      var cellWarning = row.insertCell(10);
-      var cellSTFCLevel = row.insertCell(11);
-      var cellSTFCMethod = row.insertCell(12);
+      var cellArticletext = row.insertCell(1);
+      //var cellSBU = row.insertCell(3);
+      //var cellCountry = row.insertCell(4);
+      //var cellAlphacode = row.insertCell(5);
+      var cellSegmentation = row.insertCell(2);
+      var cellTSClass = row.insertCell(3);
+      var cellSeasonal = row.insertCell(4);
+      var cellABC = row.insertCell(5);
+      var cellWarning = row.insertCell(6);
+      var cellLockingP = row.insertCell(7);
+      var cellSTFCLevel = row.insertCell(8);
+      var cellSTFCMethod = row.insertCell(9);
 
       cellGrArticle.innerHTML = JSON.stringify(info['OBJECTNAME']).slice(14, -2);
       var artKey = JSON.stringify(info['ARTKEY']).split('_^!^_', 2);
       cellLockingP.innerHTML = artKey[1];
       cellArticletext.innerHTML = info['ARTICLETEXT'];
-      cellSBU.innerHTML = info['SBU'];
-      cellCountry.innerHTML = '-';
-      cellAlphacode.innerHTML = info['ALPHA'];
+      //cellSBU.innerHTML = info['SBU'];
+      //cellCountry.innerHTML = '-';
+      //cellAlphacode.innerHTML = info['ALPHA'];
       cellSegmentation.innerHTML = info['SEGMENTATION'];
       cellTSClass.innerHTML = info['TSCLASS'];
       cellSeasonal.innerHTML = info['SEASONAL'];
@@ -198,3 +198,4 @@ export class Summary implements OnInit, AfterViewInit {
 
 
 }
+

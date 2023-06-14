@@ -1,5 +1,5 @@
 <div id="sMainInformation" class="mainInformation">
-    <select name="BU" id="BU" disabled>
+    <!--<select name="BU" id="BU" disabled>
       <option value="BU1">Z1234A01</option>
     </select>
     <div id="month">June 2021</div>
@@ -17,13 +17,14 @@
         <select class="selectGray" name="filterSettings" id="filterSet" disabled>
             <option value="FS1">Filter Settings</option>
         </select>
-    </div>
+    </div>-->
 </div>
-<hr>
+
 <div id="summaryT">
     <div id="summaryTableHeader">
         Infoprovider Summary
-        <div id="filterbox">
+        <div id="month">June 2021</div>
+        <!--<div id="filterbox">
             <div class="filter">
                 Adjustments <button class="splitButton"><i class="fas fa-wrench"></i>
                     <p class="grayButton">OFF</p>
@@ -32,36 +33,28 @@
             <select class="selectGray" name="downloads" id="downloads" disabled>
                 <option value="FS1">Downloads</option>
             </select>
-        </div>
+        </div>-->
     </div>
     <table id="summaryTable">
         <tr>
             <th>GrArticle</th>
-            <th>
-              Locking Period
-              <i id="SLockingPeriod"
-                class="fas fa-info-circle"
-                #tooltip="matTooltip"
-                matTooltip="The locking period refers to months in the future that are locked against changes to forecast data. It is useful in cases of long transportation times or purpose-built items, where planning needs to happen ahead of time. The locking period takes effect in the ADF forecast calculation. The locking period is considered as explicit part of your planning and forecast level."
-                matTooltipPosition="above"></i>
-            </th>
             <th>Article Text</th>
-            <th>SBU</th>
+            <!--<th>SBU</th>
             <th>Country</th>
-            <th>Alphacode</th>
+            <th>Alphacode</th>-->
             <th>
               Segmentation
               <i id="SSegmentation"
                  class="fas fa-info-circle"
                  #tooltip="matTooltip"
-                 matTooltip="ADF's segmentation is two-dimensional: it considers sales volume and forecast accuracy. Based on an ABC analysis, A/B articles (95% of cumulative sales volume) are moved to the focus area. By comparing the forecast accuracy of the statistical and the regional marketing forecast, articles are segmented as High-Touch (HT) or Low-Touch (LT). C articles are moved to the non-focus area and segmented as No-Touch (NT) or Random (RD)."
+                 matTooltip="Inspector Tool's segmentation is two-dimensional: it considers sales volume and forecast accuracy. Based on an ABC analysis, A/B articles (95% of cumulative sales volume) are moved to the focus area. By comparing the forecast accuracy of the statistical and the regional marketing forecast, articles are segmented as High-Touch (HT) or Low-Touch (LT). C articles are moved to the non-focus area and segmented as No-Touch (NT) or Random (RD)."
                  matTooltipPosition="above"></i>
             </th>
             <th>TS Class
               <i id="STSClass"
                  class="fas fa-info-circle"
                  #tooltip="matTooltip"
-                 matTooltip="In general, article time series can differ in type and quality. There are time series with many zeros in its data history, time series with continuous demand and classical time series patterns such as trend and seasonality, time series with a short or long data history etc. ADF distinguishes between six main time series classes: ZeroObservations, OneObservation, Smooth, Erratic, Lumpy, Sporadic."
+                 matTooltip="In general, article time series can differ in type and quality. There are time series with many zeros in its data history, time series with continuous demand and classical time series patterns such as trend and seasonality, time series with a short or long data history etc. Inspector Tool distinguishes between six main time series classes: ZeroObservations, OneObservation, Smooth, Erratic, Lumpy, Sporadic."
                  matTooltipPosition="above"></i></th>
             <th>Seasonal
               <i id="SSeasonality"
@@ -71,17 +64,25 @@
                  matTooltipPosition="above"></i></th>
             <th>ABC</th>
             <th>Warning</th>
+            <th>
+                Locking Period
+                <i id="SLockingPeriod"
+                  class="fas fa-info-circle"
+                  #tooltip="matTooltip"
+                  matTooltip="The locking period refers to months in the future that are locked against changes to forecast data. It is useful in cases of long transportation times or purpose-built items, where planning needs to happen ahead of time. The locking period takes effect in the Inspector Tool forecast calculation. The locking period is considered as explicit part of your planning and forecast level."
+                  matTooltipPosition="above"></i>
+              </th>
             <th>STFC Level
               <i id="SSTFCLevel"
                  class="fas fa-info-circle"
                  #tooltip="matTooltip"
-                 matTooltip="ADF is calculating forecasts for two years into the future: the first year is the short-term, the second the long-term forecast. For both, the best-fitting method and best-fitting forecast level (only applicable if the Feedback Loop has been activated) are automatically chosen."
+                 matTooltip="Inspector Tool is calculating forecasts for two years into the future: the first year is the short-term, the second the long-term forecast. For both, the best-fitting method and best-fitting forecast level (only applicable if the Feedback Loop has been activated) are automatically chosen."
                  matTooltipPosition="above"></i></th>
             <th>STFC Method
               <i id="SLTFCMethod"
                  class="fas fa-info-circle"
                  #tooltip="matTooltip"
-                 matTooltip="ADF is calculating forecasts for two years into the future: the first year is the short-term, the second the long-term forecast. For both, the best-fitting forecast method and level (only applicable if the Feedback Loop has been activated) are automatically chosen."
+                 matTooltip="Inspector Tool is calculating forecasts for two years into the future: the first year is the short-term, the second the long-term forecast. For both, the best-fitting forecast method and level (only applicable if the Feedback Loop has been activated) are automatically chosen."
                  matTooltipPosition="above"></i></th>
         </tr>
 
