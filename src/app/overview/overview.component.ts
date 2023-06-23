@@ -133,11 +133,33 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
     }
     
     window.addEventListener('DOMContentLoaded', (event) => {
-      setTimeout(showPopup, 7000); // 10 Sekunden Verzögerung
+      setTimeout(showPopup, 2000);
     });
     
+    // Popup-Element auswählen
+    var popup = document.getElementById("popup");
+    var popupText = document.getElementById("popupText");
+
+    // Vordefinierte Texte
+    var texts = [
+      "Need assistance? Chat with our helpful Chatbot located on the right side of your screen!",
+      "Looking for answers? Our Chatbot on the right is here to assist you!",
+      "Explore our Chatbot on the right to get immediate help and guidance!",
+      "Get expert advice! Interact with our Chatbot on the right for personalized assistance.",
+      "Having trouble? Seek help from our Chatbot on the right for instant assistance!",
+      "Stuck with a problem? Let our Chatbot on the right guide you to the solution!",
+      "Looking for solutions? Engage with our Chatbot on the right for valuable insights!",
+      "Trouble finding information? Our Chatbot on the right is here to provide valuable resources!",
+      "Seeking immediate help? Our Chatbot on the right is just a click away!",
+    ];
+
     function showPopup() {
-      var popup = document.getElementById("popup");
+      // Zufälligen Text auswählen
+      var randomIndex = Math.floor(Math.random() * texts.length);
+      var randomText = texts[randomIndex];
+    
+      // Popup anzeigen
+      popupText.innerHTML = randomText;
       popup.style.display = "block";
     }
     
