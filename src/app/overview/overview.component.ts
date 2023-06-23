@@ -173,7 +173,7 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
       secret: "HYu5FsTVYRQ.wTHsKFRVqkikwtfPkPycQSwinUKFioVZyspa5inuD_0",
       webSocket: false
     });
-
+    
 
     /*
     async function createHybridPonyfillFactory() {
