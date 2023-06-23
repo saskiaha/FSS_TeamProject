@@ -129,8 +129,23 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
       this.hideChat();
       setTimeout(() => {
         this.showChat();
-    }, 10000);
+    }, 5000);
     }
+    
+    window.addEventListener('DOMContentLoaded', (event) => {
+      setTimeout(showPopup, 7000); // 10 Sekunden Verzögerung
+    });
+    
+    function showPopup() {
+      var popup = document.getElementById("popup");
+      popup.style.display = "block";
+    }
+    
+    var okButton = document.getElementById("okButton");
+    okButton.addEventListener("click", function() {
+      var popup = document.getElementById("popup");
+      popup.style.display = "none";
+    });
 
     this.directLine = window.WebChat.createDirectLine({
       secret: "HYu5FsTVYRQ.wTHsKFRVqkikwtfPkPycQSwinUKFioVZyspa5inuD_0",

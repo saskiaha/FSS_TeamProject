@@ -40,6 +40,12 @@
     <app-article id="Article" style="display: none;" #article ></app-article>
     <app-summary id="Summary" style="display: block;" #summary></app-summary>
 </main>
+
+<div id="popup" style="display: none;">
+    <p>Hier ist der Popup-Text.</p>
+    <button id="okButton">OK</button>
+  </div>
+  
 <div id="chatIcon" (click)="showChat()" style="display: block; cursor: pointer; background-color: rgb(238, 103, 0);"        #tooltip="matTooltip"
            matTooltip="Click here to open the the conversational assistant Planny"
            matTooltipPosition= "above">
