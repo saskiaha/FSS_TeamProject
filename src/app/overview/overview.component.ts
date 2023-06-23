@@ -129,11 +129,11 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
       this.hideChat();
       setTimeout(() => {
         this.showChat();
-    }, 5000);
+    }, 7000);
     }
     
     window.addEventListener('DOMContentLoaded', (event) => {
-      setTimeout(showPopup, 2000);
+      setTimeout(showPopup, 300000);
     });
     
     // Popup-Element auswählen
@@ -173,7 +173,7 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
       secret: "HYu5FsTVYRQ.wTHsKFRVqkikwtfPkPycQSwinUKFioVZyspa5inuD_0",
       webSocket: false
     });
-    
+
 
     /*
     async function createHybridPonyfillFactory() {
