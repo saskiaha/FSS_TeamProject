@@ -430,8 +430,8 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
   }
 
   openManual() {
-    if (this.treatment == 1) {
-      window.open('assets/FSS-IT_User_Manual.pdf', 'Inspector Tool User Manual');
+    if (this.treatment == 2) {
+      window.open('assets/FSS-IT_User_Manual_withoutChatbot.pdf', 'Inspector Tool User Manual');
     } else {
       window.open('assets/FSS-IT_User_Manual.pdf', 'Inspector Tool User Manual');
     }
