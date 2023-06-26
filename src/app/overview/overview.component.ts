@@ -129,11 +129,10 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
       this.hideChat();
       setTimeout(() => {
         this.showChat();
-    }, 7000);
-    }
-    
+    }, 4000);
+
     window.addEventListener('DOMContentLoaded', (event) => {
-      setTimeout(showPopup, 300000);
+      setTimeout(showPopup, 8000);
     });
     
     // Popup-Element auswählen
@@ -168,6 +167,9 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
       var popup = document.getElementById("popup");
       popup.style.display = "none";
     });
+    }
+    
+    
 
     this.directLine = window.WebChat.createDirectLine({
       secret: "HYu5FsTVYRQ.wTHsKFRVqkikwtfPkPycQSwinUKFioVZyspa5inuD_0",
