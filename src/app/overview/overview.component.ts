@@ -168,8 +168,6 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
       popup.style.display = "none";
     });
     }
-    
-    
 
     this.directLine = window.WebChat.createDirectLine({
       secret: "HYu5FsTVYRQ.wTHsKFRVqkikwtfPkPycQSwinUKFioVZyspa5inuD_0",
