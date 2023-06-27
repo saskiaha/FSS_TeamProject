@@ -178,10 +178,10 @@ tr .blue {
   color: #99D3ED;
 }
 
-tr:hover {
+/*tr:hover {
   background-color:rgb(243, 243, 243);
   cursor:pointer;
-}
+}*/
 
 li a i {
   margin-right: 4px;
@@ -305,5 +305,6 @@ aside img {
   padding-right: 10px;
   z-index: 101;
   font-size: 15px;
+  border-radius: 8px;
 }
 
