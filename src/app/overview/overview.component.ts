@@ -129,10 +129,10 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
       this.hideChat();
       setTimeout(() => {
         this.showChat();
-    }, 4000);
+    }, 5000);
 
     window.addEventListener('DOMContentLoaded', (event) => {
-      setTimeout(showPopup, 8000);
+      setTimeout(showPopup, 420000);
     });
     
     // Popup-Element auswählen
