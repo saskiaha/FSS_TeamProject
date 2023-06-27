@@ -68,9 +68,9 @@ app.post("/api/interaction/", (req, res, next) => {
 https
   .createServer(
     {
-      key: fs.reInspector ToolileSync('../../etc/letsencrypt/live/feeasy.org/privkey.pem', 'utf8'),
-      cert: fs.reInspector ToolileSync('../../etc/letsencrypt/live/feeasy.org/cert.pem', 'utf8'),
-      ca: fs.reInspector ToolileSync('../../etc/letsencrypt/live/feeasy.org/chain.pem', 'utf8')
+      key: fs.readfileSync('../../etc/letsencrypt/live/feeasy.org/privkey.pem', 'utf8'),
+      cert: fs.readfileSync('../../etc/letsencrypt/live/feeasy.org/cert.pem', 'utf8'),
+      ca: fs.readfileSync('../../etc/letsencrypt/live/feeasy.org/chain.pem', 'utf8')
     },
     app
   )
