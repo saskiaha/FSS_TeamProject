@@ -123,9 +123,12 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
     this.drillDownService.postData('Start', '');
     if (this.treatment == 2) {
       document.getElementById("chatIcon").style.display = 'none';
+      document.getElementById("ArticleSelect").style.display = 'none';
 
     } else {
 
+      document.getElementById("ArticleSelect2").style.display = 'none';
+      
       this.hideChat();
       setTimeout(() => {
         this.showChat();
