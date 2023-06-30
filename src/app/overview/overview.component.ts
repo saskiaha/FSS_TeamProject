@@ -128,7 +128,7 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
     } else {
 
       document.getElementById("ArticleSelect2").style.display = 'none';
-      
+
       this.hideChat();
       setTimeout(() => {
         this.showChat();
@@ -825,11 +825,11 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
 
         break;
 
-      case "Summary Main Information":
+/*      case "Summary Main Information":
         if (this.status == "Summary") {
           document.getElementById("sMainInformation").classList.add("highlightBox");
         }
-        break;
+        break;*/
       case "Summary Table":
         if (this.status == "Summary") {
           document.getElementById("summaryTable").classList.add("highlightBox");
