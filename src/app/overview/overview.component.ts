@@ -170,7 +170,12 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
       popup.style.display = "none";
     });
     }
-
+    
+    if (this.task == 0){
+      document.getElementById("articleText1").style.display = 'none';
+      document.getElementById("articleText2").style.display = 'none';
+      document.getElementById("articleText3").style.display = 'none';
+    }
     if(this.task == 1){
       document.getElementById("articleText2").style.display = 'none';
       document.getElementById("articleText3").style.display = 'none';
