@@ -28,6 +28,14 @@ body {
 	margin-right: 8px;
   }
   
+  .divider {
+	border-right: 1.5px solid white;
+	padding: 12px 20px;
+	display: inline;
+	font-weight: bolder;
+	margin-right: -20px;
+  }
+
   hr {
 	border-top: 0.5px solid rgb(235, 235, 235);
   }
@@ -113,7 +121,7 @@ a:not([href]):not([class]) {
   display: inline-block;
   margin-left: 20px;
   font-weight: bolder;
-  color: black;
+  color: #005981;
 }
   
   #filterbox {

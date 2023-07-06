@@ -1,8 +1,10 @@
 <header style="background-color: rgb(54, 110, 183);">
-    <div class="headerIcon">FSS-TP</div> <b>Inspector Tool</b> <img id="headerImg"
+    <div class="headerIcon">FSS-TP</div> <b>Inspector Tool</b>  <img id="headerImg"
         src="../../assets/images/Logo_BA.jpg"
         alt="Header Image" style="width: 80px; height: 80px;">
-       
+    
+        <div class="divider"></div>
+
         <select onchange="window.location=this.options[this.selectedIndex].value" id="ArticleSelect">
             <option>Select Article</option>
             <option value="/0000000/0/1">Luxury Bike</option>
@@ -16,6 +18,11 @@
             <option value="/0000000/2/2">City Bike</option>
             <option value="/0000000/2/3">Bike Bottle</option>
         </select> 
+        
+        <div class=articleText id="articleText1">Luxury Bike</div>
+        <div class=articleText id="articleText2">City Bike</div>
+        <div class=articleText id="articleText3">Bike Bottle</div>
+
 </header>
 
 <div class="menuBar" id="menuBar">

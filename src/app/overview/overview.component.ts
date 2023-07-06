@@ -149,8 +149,7 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
       "Explore our Chatbot on the right to get immediate help and guidance!",
       "Get expert advice! Interact with our Chatbot on the right for personalized assistance.",
       "Having trouble? Seek help from our Chatbot on the right for instant assistance!",
-      "Stuck with a problem? Let our Chatbot on the right guide you to the solution!",
-      "Looking for solutions? Engage with our Chatbot on the right for valuable insights!",
+      "Looking for answers? Engage with our Chatbot on the right for valuable insights!",
       "Trouble finding information? Our Chatbot on the right is here to provide valuable resources!",
       "Seeking immediate help? Our Chatbot on the right is just a click away!",
     ];
@@ -170,6 +169,19 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
       var popup = document.getElementById("popup");
       popup.style.display = "none";
     });
+    }
+
+    if(this.task == 1){
+      document.getElementById("articleText2").style.display = 'none';
+      document.getElementById("articleText3").style.display = 'none';
+    } 
+    if (this.task == 2){
+      document.getElementById("articleText1").style.display = 'none';
+      document.getElementById("articleText3").style.display = 'none';
+    }
+    if (this.task == 3){
+      document.getElementById("articleText1").style.display = 'none';
+      document.getElementById("articleText2").style.display = 'none';
     }
 
     this.directLine = window.WebChat.createDirectLine({
