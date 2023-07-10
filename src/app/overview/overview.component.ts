@@ -188,7 +188,7 @@ export class Overview implements OnInit, OnDestroy, AfterViewInit, AfterContentI
       document.getElementById("articleText1").style.display = 'none';
       document.getElementById("articleText2").style.display = 'none';
     }
-
+    
     this.directLine = window.WebChat.createDirectLine({
       secret: "HYu5FsTVYRQ.wTHsKFRVqkikwtfPkPycQSwinUKFioVZyspa5inuD_0",
       webSocket: false
